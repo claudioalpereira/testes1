@@ -1,0 +1,122 @@
+﻿@model TripRqst.Models.TripRequest
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TripRequest</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DataDoPedido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataDoPedido)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Passageiro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Passageiro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Identificacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Identificacao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Origem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Origem)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Destino)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Destino)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Partida)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Partida)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Chegada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Chegada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiasDeAntecedencia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiasDeAntecedencia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustoAviao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustoAviao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustoHotel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustoHotel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustoCarro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustoCarro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustoOutros)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustoOutros)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustoTotal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustoTotal)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
