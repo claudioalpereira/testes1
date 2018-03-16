@@ -16,27 +16,28 @@ namespace TripRqst.Models
         [Display(Name = "Data do pedido")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
-        [Editable(allowEdit:false,AllowInitialValue =true)]
-        //public DateTime DataDoPedido { get; set; }
-        public DateTime DataDoPedido
-        {
-            get
-            {
-                return this.dataDoPedido.HasValue
-                   ? this.dataDoPedido.Value
-                   : DateTime.Now;
-            }
+//        [Editable(allowEdit:false,AllowInitialValue =true)]
+        public DateTime DataDoPedido { get; set; }
+        //public DateTime DataDoPedido
+        //{
+        //    get
+        //    {
+        //        return this.dataDoPedido.HasValue
+        //           ? this.dataDoPedido.Value
+        //           : DateTime.Now;
+        //    }
 
-            set { this.dataDoPedido = value; }
-        }
+        //    set { this.dataDoPedido = value; }
+        //}
 
-        private DateTime? dataDoPedido = null;
+        //private DateTime? dataDoPedido = null;
+
         [Required]
         public string Passageiro { get; set; }
 
         [Required]
         [Display(Name = "Motivo da viagem")]
-        public virtual TR_Def_Motivo MotivoViagem { get; set; }
+        public string Motivo { get; set; }
 
         [Required]
         [Display(Name = "Identificação")]
@@ -63,63 +64,60 @@ namespace TripRqst.Models
 
         [Required]
         [Display(Name = "Justificação")]
-        public virtual TR_Def_Justif Justificacao { get; set; }
+        public virtual Justificacao_Tr Justificacao { get; set; }
+
+        public int Justificacao_Id { get; set; }
 
         [Display(Name = "Avião")]
+        [DataType(DataType.Currency)]
         public int CustoAviao { get; set; }
 
         [Display(Name = "Hotel")]
+        [DataType(DataType.Currency)]
         public int CustoHotel { get; set; }
 
         [Display(Name = "Carro")]
+        [DataType(DataType.Currency)]
         public int CustoCarro { get; set; }
 
         [Display(Name = "Outros")]
+        [DataType(DataType.Currency)]
         public int CustoOutros { get; set; }
 
         [Display(Name = "Custo total")]
+        [DataType(DataType.Currency)]
         public int CustoTotal { get; set; }
 
         [Required]
         [Display(Name = "Alocação")]
-        public virtual TripRequest_Alocacao Aloc { get; set; }
+        public virtual Alocacao_Tr Alocacao{ get; set; }
     }
 
-    public class TR_Def_Aloc
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-    }
-    public class TR_Def_Motivo
+    public class Alocacao_Tr
     {
         public int Id { get; set; }
         public string Code { get; set; }
         public string Name { get; set; }
+        public string Info { get; set; }
+        public bool Active { get; set; }
     }
-    public class TR_Def_Justif
+    public class Motivo_Tr
     {
         public int Id { get; set; }
+        public string Code { get; set; }
         public string Name { get; set; }
-        public bool RequiresEmail { get; set; }
-        public bool RequiresAuthorizedMailSender { get; set; }
+        public string Info { get; set; }
+        public bool Active { get; set; }
     }
-
-    public class TripRequest_Alocacao
+    public class Justificacao_Tr
     {
         public int Id { get; set; }
-        public TR_Def_Aloc AlocacaoDef { get; set; }
+        public string Code { get; set; }
+        public string Name { get; set; }
+        public string Info { get; set; }
         public bool RequiresEmail { get; set; }
-        public bool RequiresAuthorizedMailSender { get; set; }
-    }
-
-    //https://stackoverflow.com/questions/33197402/link-asp-net-identity-users-to-user-detail-table
-    public class TR_UserDetails
-    {
-        public int Id { get; set; }
-
-        [Key, ForeignKey("User")]
-        public string UserId { get; set; }
-        public virtual ApplicationUser User { get; set; }
+        public bool RequiresEmailFromAuthorizedSender { get; set; }
+        public bool Active { get; set; }
     }
 
 

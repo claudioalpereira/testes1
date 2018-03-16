@@ -11,116 +11,107 @@ using TripRqst.Models;
 
 namespace TripRqst.Controllers
 {
-    public class TripRequestsController : Controller
+    public class Justificacao_TrController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: TripRequests
+        // GET: Justificacao_Tr
         public async Task<ActionResult> Index()
         {
-            return View(await db.TR_requests.ToListAsync());
+            return View(await db.TR_Justificacoes.ToListAsync());
         }
 
-        // GET: TripRequests/Details/5
+        // GET: Justificacao_Tr/Details/5
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TripRequest tripRequest = await db.TR_requests.FindAsync(id);
-            if (tripRequest == null)
+            Justificacao_Tr justificacao_Tr = await db.TR_Justificacoes.FindAsync(id);
+            if (justificacao_Tr == null)
             {
                 return HttpNotFound();
             }
-            return View(tripRequest);
+            return View(justificacao_Tr);
         }
 
-        // GET: TripRequests/Create
+        // GET: Justificacao_Tr/Create
         public ActionResult Create()
         {
-            ViewBag.Motivos = db.TR_Motivos.Where(m => m.Active);
-            ViewBag.Justificacoes = db.TR_Justificacoes.Where(j => j.Active);
-            ViewBag.Alocacoes = db.TR_Alocacoes.Where(a => a.Active);
-
-            var r = new TripRequest
-            {
-                DataDoPedido = DateTime.Now,
-                Passageiro = User.Identity.Name
-            };
-            return View(r);
+            return View();
         }
 
-        // POST: TripRequests/Create
+        // POST: Justificacao_Tr/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,DataDoPedido,Passageiro,MotivoCode,MotivoName,Identificacao,Origem,Destino,Partida,Chegada,DiasDeAntecedencia,CustoAviao,CustoHotel,CustoCarro,CustoOutros,CustoTotal")] TripRequest tripRequest)
+        public async Task<ActionResult> Create([Bind(Include = "Id,Code,Name,Info,RequiresEmail,RequiresEmailFromAuthorizedSender")] Justificacao_Tr justificacao_Tr)
         {
             if (ModelState.IsValid)
             {
-                db.TR_requests.Add(tripRequest);
+                db.TR_Justificacoes.Add(justificacao_Tr);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            return View(tripRequest);
+            return View(justificacao_Tr);
         }
 
-        // GET: TripRequests/Edit/5
+        // GET: Justificacao_Tr/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TripRequest tripRequest = await db.TR_requests.FindAsync(id);
-            if (tripRequest == null)
+            Justificacao_Tr justificacao_Tr = await db.TR_Justificacoes.FindAsync(id);
+            if (justificacao_Tr == null)
             {
                 return HttpNotFound();
             }
-            return View(tripRequest);
+            return View(justificacao_Tr);
         }
 
-        // POST: TripRequests/Edit/5
+        // POST: Justificacao_Tr/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,DataDoPedido,Passageiro,MotivoCode,MotivoName,Identificacao,Origem,Destino,Partida,Chegada,DiasDeAntecedencia,CustoAviao,CustoHotel,CustoCarro,CustoOutros,CustoTotal")] TripRequest tripRequest)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Code,Name,Info,RequiresEmail,RequiresEmailFromAuthorizedSender")] Justificacao_Tr justificacao_Tr)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(tripRequest).State = EntityState.Modified;
+                db.Entry(justificacao_Tr).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            return View(tripRequest);
+            return View(justificacao_Tr);
         }
 
-        // GET: TripRequests/Delete/5
+        // GET: Justificacao_Tr/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TripRequest tripRequest = await db.TR_requests.FindAsync(id);
-            if (tripRequest == null)
+            Justificacao_Tr justificacao_Tr = await db.TR_Justificacoes.FindAsync(id);
+            if (justificacao_Tr == null)
             {
                 return HttpNotFound();
             }
-            return View(tripRequest);
+            return View(justificacao_Tr);
         }
 
-        // POST: TripRequests/Delete/5
+        // POST: Justificacao_Tr/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            TripRequest tripRequest = await db.TR_requests.FindAsync(id);
-            db.TR_requests.Remove(tripRequest);
+            Justificacao_Tr justificacao_Tr = await db.TR_Justificacoes.FindAsync(id);
+            db.TR_Justificacoes.Remove(justificacao_Tr);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }

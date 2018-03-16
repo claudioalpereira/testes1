@@ -40,9 +40,9 @@ namespace TripRqst.Models
         }
 
         public DbSet<TripRequest> TR_requests { get; set; }
-        public DbSet<TR_Def_Justif> TR_Justificacoes { get; set; }
-        public DbSet<TR_Def_Motivo> TR_Motivos { get; set; }
-        public DbSet<TR_Def_Aloc> TR_Alocacoes { get; set; }
+        public DbSet<Justificacao_Tr> TR_Justificacoes { get; set; }
+        public DbSet<Motivo_Tr> TR_Motivos { get; set; }
+        public DbSet<Alocacao_Tr> TR_Alocacoes { get; set; }
         //public DbSet<TripRequest_Alocacao> TR_request_Alocacao { get; set; }
     }
 
@@ -51,30 +51,30 @@ namespace TripRqst.Models
     {
         protected override void Seed(ApplicationDbContext context)
         {
-            context.TR_Alocacoes.Add( new Models.TR_Def_Aloc { Name = "HQ" });
-            context.TR_Alocacoes.Add( new Models.TR_Def_Aloc { Name = "Projeto" });
-            context.TR_Alocacoes.Add( new Models.TR_Def_Aloc { Name = "CL" });
+            context.TR_Alocacoes.Add( new Models.Alocacao_Tr { Name = "HQ" });
+            context.TR_Alocacoes.Add( new Models.Alocacao_Tr { Name = "Projeto" });
+            context.TR_Alocacoes.Add( new Models.Alocacao_Tr { Name = "CL" });
 
-            context.TR_Motivos.Add( new Models.TR_Def_Motivo { Code = "FDSV", Name = "Project (Construction/installation/maintenance/repair)" });
-            context.TR_Motivos.Add( new Models.TR_Def_Motivo { Code = "EXTN", Name = "Meeting Customer (Meeting, Event, Conference or Fair)" });
-            context.TR_Motivos.Add( new Models.TR_Def_Motivo { Code = "CONV", Name = "Meeting Non-Customer (Meeting, Event, Conference or Fair)" });
-            context.TR_Motivos.Add( new Models.TR_Def_Motivo { Code = "INTM", Name = "Meeting Siemens Internal (Meeting, Conference or Event)" });
-            context.TR_Motivos.Add( new Models.TR_Def_Motivo { Code = "TRNG", Name = "Training" });
-            context.TR_Motivos.Add( new Models.TR_Def_Motivo { Code = "HOHO", Name = "Delegation (home and host based)" });
-            context.TR_Motivos.Add( new Models.TR_Def_Motivo { Code = "HMLV", Name = "Home leave" });
-            context.TR_Motivos.Add( new Models.TR_Def_Motivo { Code = "RELO", Name = "Relocation" });
-            context.TR_Motivos.Add( new Models.TR_Def_Motivo { Code = "JAPP", Name = "Job applicants" });
-            context.TR_Motivos.Add( new Models.TR_Def_Motivo { Code = "SIGU", Name = "Siemens Guest" });
+            context.TR_Motivos.Add( new Models.Motivo_Tr { Code = "FDSV", Name = "Project", Info = "(Construction/installation/maintenance/repair)" });
+            context.TR_Motivos.Add( new Models.Motivo_Tr { Code = "EXTN", Name = "Meeting Customer", Info = "(Meeting, Event, Conference or Fair)" });
+            context.TR_Motivos.Add( new Models.Motivo_Tr { Code = "CONV", Name = "Meeting Non-Customer", Info = "(Meeting, Event, Conference or Fair)" });
+            context.TR_Motivos.Add( new Models.Motivo_Tr { Code = "INTM", Name = "Meeting Siemens Internal", Info = "(Meeting, Conference or Event)" });
+            context.TR_Motivos.Add( new Models.Motivo_Tr { Code = "TRNG", Name = "Training" });
+            context.TR_Motivos.Add( new Models.Motivo_Tr { Code = "HOHO", Name = "Delegation", Info = "(home and host based)" });
+            context.TR_Motivos.Add( new Models.Motivo_Tr { Code = "HMLV", Name = "Home leave" });
+            context.TR_Motivos.Add( new Models.Motivo_Tr { Code = "RELO", Name = "Relocation" });
+            context.TR_Motivos.Add( new Models.Motivo_Tr { Code = "JAPP", Name = "Job applicants" });
+            context.TR_Motivos.Add( new Models.Motivo_Tr { Code = "SIGU", Name = "Siemens Guest" });
 
-            context.TR_Justificacoes.Add( new Models.TR_Def_Justif { Name = "Dentro do tempo estipulado", RequiresEmail = true, RequiresAuthorizedMailSender = false });
-            context.TR_Justificacoes.Add( new Models.TR_Def_Justif { Name = "Avaria/Situação de Obra Urgente ", RequiresEmail = true, RequiresAuthorizedMailSender = false });
-            context.TR_Justificacoes.Add( new Models.TR_Def_Justif { Name = "Exigência do Cliente", RequiresEmail = true, RequiresAuthorizedMailSender = false });
-            context.TR_Justificacoes.Add( new Models.TR_Def_Justif { Name = "Ao Abrigo de SLA", RequiresEmail = true, RequiresAuthorizedMailSender = false });
-            context.TR_Justificacoes.Add( new Models.TR_Def_Justif { Name = "Razão Particular", RequiresEmail = true, RequiresAuthorizedMailSender = false });
-            context.TR_Justificacoes.Add( new Models.TR_Def_Justif { Name = "Falha Processual Agênciac", RequiresEmail = true, RequiresAuthorizedMailSender = false });
-            context.TR_Justificacoes.Add( new Models.TR_Def_Justif { Name = "Falha Processual Interna", RequiresEmail = true, RequiresAuthorizedMailSender = false });
-            context.TR_Justificacoes.Add( new Models.TR_Def_Justif { Name = "Conveniência (melhor preço, falta de vôos, horários, etc)", RequiresEmail = true, RequiresAuthorizedMailSender = false });
-            context.TR_Justificacoes.Add( new Models.TR_Def_Justif { Name = "Outro", RequiresEmail = true, RequiresAuthorizedMailSender = false });
+            context.TR_Justificacoes.Add( new Models.Justificacao_Tr { Name = "Dentro do tempo estipulado", RequiresEmail = true, RequiresEmailFromAuthorizedSender = false });
+            context.TR_Justificacoes.Add( new Models.Justificacao_Tr { Name = "Avaria/Situação de Obra Urgente ", RequiresEmail = true, RequiresEmailFromAuthorizedSender = false });
+            context.TR_Justificacoes.Add( new Models.Justificacao_Tr { Name = "Exigência do Cliente", RequiresEmail = true, RequiresEmailFromAuthorizedSender = false });
+            context.TR_Justificacoes.Add( new Models.Justificacao_Tr { Name = "Ao Abrigo de SLA", RequiresEmail = true, RequiresEmailFromAuthorizedSender = false });
+            context.TR_Justificacoes.Add( new Models.Justificacao_Tr { Name = "Razão Particular", RequiresEmail = true, RequiresEmailFromAuthorizedSender = false });
+            context.TR_Justificacoes.Add( new Models.Justificacao_Tr { Name = "Falha Processual Agênciac", RequiresEmail = true, RequiresEmailFromAuthorizedSender = false });
+            context.TR_Justificacoes.Add( new Models.Justificacao_Tr { Name = "Falha Processual Interna", RequiresEmail = true, RequiresEmailFromAuthorizedSender = false });
+            context.TR_Justificacoes.Add( new Models.Justificacao_Tr { Name = "Conveniência", Info="(melhor preço, falta de vôos, horários, etc)", RequiresEmail = true, RequiresEmailFromAuthorizedSender = false });
+            context.TR_Justificacoes.Add( new Models.Justificacao_Tr { Name = "Outro", RequiresEmail = true, RequiresEmailFromAuthorizedSender = false });
 
 
             //

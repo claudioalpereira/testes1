@@ -168,8 +168,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Alocacao_TrController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\Justificacao_TrController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\Motivo_TrController.cs" />
     <Compile Include="Controllers\TripRequestsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -178,7 +181,8 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\TripRequest.cs" />
+    <Compile Include="Models\MyModels.cs" />
+    <Compile Include="Models\TripRequestModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Utils\MyEmailService.cs" />
@@ -204,7 +208,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -243,6 +249,21 @@
     <Content Include="Views\TripRequests\Details.cshtml" />
     <Content Include="Views\TripRequests\Edit.cshtml" />
     <Content Include="Views\TripRequests\Index.cshtml" />
+    <Content Include="Views\Alocacao_Tr\Create.cshtml" />
+    <Content Include="Views\Alocacao_Tr\Delete.cshtml" />
+    <Content Include="Views\Alocacao_Tr\Details.cshtml" />
+    <Content Include="Views\Alocacao_Tr\Edit.cshtml" />
+    <Content Include="Views\Alocacao_Tr\Index.cshtml" />
+    <Content Include="Views\Motivo_Tr\Create.cshtml" />
+    <Content Include="Views\Motivo_Tr\Delete.cshtml" />
+    <Content Include="Views\Motivo_Tr\Details.cshtml" />
+    <Content Include="Views\Motivo_Tr\Edit.cshtml" />
+    <Content Include="Views\Motivo_Tr\Index.cshtml" />
+    <Content Include="Views\Justificacao_Tr\Create.cshtml" />
+    <Content Include="Views\Justificacao_Tr\Delete.cshtml" />
+    <Content Include="Views\Justificacao_Tr\Details.cshtml" />
+    <Content Include="Views\Justificacao_Tr\Edit.cshtml" />
+    <Content Include="Views\Justificacao_Tr\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
