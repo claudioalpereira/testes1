@@ -64,6 +64,6 @@ c:\users\z003m7uz\documents\visual studio 2015\Projects\TripRqst\TripRqst\bin\Mi
 c:\users\z003m7uz\documents\visual studio 2015\Projects\TripRqst\TripRqst\bin\Microsoft.Owin.Security.Google.xml
 c:\users\z003m7uz\documents\visual studio 2015\Projects\TripRqst\TripRqst\bin\Microsoft.Owin.Security.Twitter.xml
 c:\users\z003m7uz\documents\visual studio 2015\Projects\TripRqst\TripRqst\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-c:\users\z003m7uz\documents\visual studio 2015\Projects\TripRqst\TripRqst\obj\Debug\TripRqst.csprojResolveAssemblyReference.cache
 c:\users\z003m7uz\documents\visual studio 2015\Projects\TripRqst\TripRqst\obj\Debug\TripRqst.dll
 c:\users\z003m7uz\documents\visual studio 2015\Projects\TripRqst\TripRqst\obj\Debug\TripRqst.pdb
+C:\Users\z003m7uz\documents\visual studio 2015\Projects\TripRqst\TripRqst\obj\Debug\TripRqst.csprojResolveAssemblyReference.cache

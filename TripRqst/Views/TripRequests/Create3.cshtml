@@ -1,0 +1,543 @@
+﻿@model TripRqst.Models.TripRequest
+
+@{
+    ViewBag.Title = "Create";
+    var ccc = (IEnumerable<SelectListItem>)ViewBag.Countries;
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm( "Create", "TripRequests", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>TripRequest</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        @* dataDoPedido *@
+        <div class="form-group">
+            @Html.LabelFor(model => model.DataDoPedido, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DataDoPedido, new { htmlAttributes = new { @class = "form-control", @data_bind = "value: DataDoPedido", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.DataDoPedido, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @* Passageiro *@
+        <div class="form-group">
+            @Html.LabelFor(model => model.Passageiro, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Passageiro, new { htmlAttributes = new { @class = "form-control", @data_bind = "value: Passageiro" } })
+                @Html.ValidationMessageFor(model => model.Passageiro, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @* MotivoCode *@
+        <div class="form-group">
+            <label class="control-label col-md-2" for="MotivoSelect">Motivo</label>
+            <div class="col-md-10">
+                <select id="MotivoSelect"
+                        class="form-control"
+                        data-val="true"
+                        data-val-required="This field is required."
+                        data-bind="options: availableMotivos,
+                                    optionsText: 'Name',
+                                    value: selectedMotivo,
+                                    optionsCaption: 'Choose...'"></select>
+
+                <span data-bind="with: selectedMotivo">
+                    <input type="hidden" name="MotivoCode" data-bind="value: Code" />
+                    <input type="hidden" name="MotivoName" data-bind="value: Name" />
+                </span>
+
+                <div data-bind="text: displayMotivo()"></div>.
+                <span class="field-validation-valid text-danger" data-valmsg-for="MotivoSelect" data-valmsg-replace="true"></span>
+
+            </div>
+        </div>
+
+        @* Identificacao *@
+        <div class="form-group">
+            @Html.LabelFor(model => model.Identificacao, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Identificacao, new { htmlAttributes = new { @class = "form-control", @data_bind = "value: Identificacao" } })
+                @Html.ValidationMessageFor(model => model.Identificacao, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @* Origem *@
+ @*
+    <div class="form-group">
+        @Html.LabelFor(model => model.OrigemPais, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(
+                model => model.OrigemPais,
+                ccc,
+                new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.OrigemPais, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.OrigemCidade, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.OrigemCidade, new { htmlAttributes = new { @class = "form-control", @data_bind = "value: OrigemCidade" } })
+            @Html.ValidationMessageFor(model => model.OrigemCidade, "", new { @class = "text-danger" })
+        </div>
+    </div>
+*@
+        @* Origem Pais DropDown *@
+        <div class="form-group">
+            <label class="control-label col-md-2" for="OrigemPaisDD">País</label>
+            <div class="col-md-10">
+                @Html.DropDownList("OrigemPaisDD", ccc, new { @class = "form-control", @data_bind= "value: OrigemPaisCode" })
+            </div>
+        </div>
+        <input type="text" name="OrigemPaisName" data-bind="value: OrigemPaisName" />
+        <input type="text" name="OrigemIntercontinental" data-bind="value: OrigemIntercontinental" />
+
+        @* Origem Cidade *@
+        <input id="OrigemCidade" type="text" class="form-control" data-bind="value: OrigemCidade" />
+
+        
+
+        @* Destino *@
+        <div class="form-group">
+            @Html.LabelFor(model => model.DestinoPais, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(
+                    model => model.DestinoPais,
+                    ccc,
+                    new { @class = "form-control", @value = "Other" })
+                @Html.ValidationMessageFor(model => model.DestinoPais, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DestinoCidade, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DestinoCidade, new { htmlAttributes = new { @class = "form-control", @data_bind = "value: DestinoCidade" } })
+                @Html.ValidationMessageFor(model => model.DestinoCidade, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @* Partida *@
+        <div class="form-group">
+            @Html.LabelFor(model => model.Partida, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Partida, new
+           {
+               htmlAttributes = new
+               {
+                   @class = "form-control",
+                   @data_bind = "value: Partida",
+                   @min = DateTime.UtcNow
+               }
+           })
+                @Html.ValidationMessageFor(model => model.Partida, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @* Chegada *@
+        <div class="form-group">
+            @Html.LabelFor(model => model.Chegada, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Chegada, new { htmlAttributes = new { @class = "form-control", @data_bind = "value: Chegada" } })
+                @Html.ValidationMessageFor(model => model.Chegada, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @* DiasDeAntecedencia *@
+        <div class="form-group">
+            @Html.LabelFor(model => model.DiasDeAntecedencia, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DiasDeAntecedencia, new { htmlAttributes = new { @class = "form-control", @data_bind = "value: DiasDeAntecedencia" } })
+                @Html.ValidationMessageFor(model => model.DiasDeAntecedencia, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div data-bind="text: BookingAdvanceMin"></div>
+        <div data-bind="text: BookingOverdue"></div>
+
+        @* Justificacao *@
+        <div class="form-group">
+            <label class="control-label col-md-2" for="JustificacaoSelect">Justificação</label>
+            <div class="col-md-10">
+                <select id="JustificacaoSelect"
+                        class="form-control"
+                        data-val="true"
+                        data-val-required="This field is required."
+                        data-bind="options: availableJust,
+                                    optionsText: 'Name',
+                                    value: selectedJust,
+                                    optionsCaption: 'Choose...'"></select>
+
+                <span data-bind="with: selectedJust">
+                    <input type="hidden" name="JustificacaoCode" data-bind="value: Code" />
+                    <input type="hidden" name="JustificacaoName" data-bind="value: Name" />
+                </span>
+
+                <div data-bind="text: displayJust()"></div>.
+                <span class="field-validation-valid text-danger" data-valmsg-for="JustificacaoSelect" data-valmsg-replace="true"></span>
+
+            </div>
+        </div>
+
+        @* Email *@
+        <div class="form-group">
+            @Html.Label("Email", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" id="justEmail" name="justEmail" accept=".msg" />
+            </div>
+        </div>
+
+        @* CustoAviao *@
+        <div class="form-group">
+            @Html.LabelFor(model => model.CustoAviao, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="input-group">
+                    <span class="input-group-addon">€</span>
+                    @Html.EditorFor(model => model.CustoAviao, new
+                       {
+                           htmlAttributes = new
+                           {
+                               @class = "form-control currency",
+                               @data_bind = "value: CustoAviao",
+                               @step = 0.01,
+                               @type = "number",
+                               @min = 0,
+                               @data_number_to_fixed = 2,
+                               @data_number_stepfactor = 100
+                           }
+                       })
+                    @Html.ValidationMessageFor(model => model.CustoAviao, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+
+
+        @* CustoHotel *@
+        <div class="form-group">
+            @Html.LabelFor(model => model.CustoHotel, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="input-group">
+                    <span class="input-group-addon">€</span>
+                    @Html.EditorFor(model => model.CustoHotel, new
+                       {
+                           htmlAttributes = new
+                           {
+                               @class = "form-control currency",
+                               @data_bind = "value: CustoHotel",
+                               @step = "0.01",
+                               @type = "number",
+                               @min = 0,
+                               @data_number_to_fixed = "2",
+                               @data_number_stepfactor = "100"
+                           }
+                       })
+                    @Html.ValidationMessageFor(model => model.CustoHotel, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        @* CustoCarro *@
+        <div class="form-group">
+            @Html.LabelFor(model => model.CustoCarro, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="input-group">
+                    <span class="input-group-addon">€</span>
+                    @Html.EditorFor(model => model.CustoCarro, new
+                       {
+                           htmlAttributes = new
+                           {
+                               @class = "form-control currency",
+                               @data_bind = "value: CustoCarro",
+                               @step = "0.01",
+                               @type = "number",
+                               @min = 0,
+                               @data_number_to_fixed = "2",
+                               @data_number_stepfactor = "100"
+                           }
+                       })
+                    @Html.ValidationMessageFor(model => model.CustoCarro, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        @* CustoOutros *@
+        <div class="form-group">
+            @Html.LabelFor(model => model.CustoOutros, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="input-group">
+                    <span class="input-group-addon">€</span>
+                    @Html.EditorFor(model => model.CustoOutros, new
+                       {
+                           htmlAttributes = new
+                           {
+                               @class = "form-control currency",
+                               @data_bind = "value: CustoOutros",
+                               @step = "0.01",
+                               @type = "number",
+                               @min = 0,
+                               @data_number_to_fixed = "2",
+                               @data_number_stepfactor = "100"
+                           }
+                       })
+                    @Html.ValidationMessageFor(model => model.CustoOutros, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        @* CustoTotal *@
+        <div class="form-group">
+            @Html.LabelFor(model => model.CustoTotal, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="input-group">
+                    <span class="input-group-addon">€</span>
+                    @Html.EditorFor(model => model.CustoTotal, new
+                       {
+                           htmlAttributes = new
+                           {
+                               @class = "form-control currency",
+                               @data_bind = "value: CustoTotal",
+                               @step = "0.01",
+                               @type = "number",
+                               @min = 0,
+                               @data_number_to_fixed = "2",
+                               @data_number_stepfactor = "100"
+                           }
+                       })
+                    @Html.ValidationMessageFor(model => model.CustoTotal, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        @* AlocacaoCode *@
+        <div class="form-group">
+            <label class="control-label col-md-2" for="AlocacaoSelect">Alocação</label>
+            <div class="col-md-10">
+                <select id="AlocacaoSelect"
+                        class="form-control"
+                        data-val="true"
+                        data-val-required="This field is required."
+                        data-bind="options: availableAloc,
+                                    optionsText: 'Name',
+                                    value: selectedAloc,
+                                    optionsCaption: 'Choose...'"></select>
+
+                <span data-bind="with: selectedAloc">
+                    <input type="hidden" name="AlocacaoCode" data-bind="value: Code" />
+                    <input type="hidden" name="AlocacaoName" data-bind="value: Name" />
+                </span>
+
+                <div data-bind="text: displayAloc()"></div>.
+                <span class="field-validation-valid text-danger" data-valmsg-for="AlocacaoSelect" data-valmsg-replace="true"></span>
+
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+
+            <div>
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+
+            @section Scripts {
+
+                <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBWB2K_gcueglv8tfndel_f8-thkCliwUo"></script>
+
+                <script>
+
+                  
+
+                    function displayNameInfoCode(obj) {
+                        if (!obj)
+                            return "";
+
+                        var ret = (obj.Name || "") + " " + (obj.Info || "") + " " + (obj.Code || "");
+                        return ret;
+                    }
+
+                    // View Model
+                    function AppViewModel() {
+                        var self = this;
+
+                        // http://www.geognos.com/api/en/countries/info/all.json
+                        //this.countries = ['Afghanistan', 'Albania', 'Algeria', 'American Samoa', 'Andorra', 'Angola', 'Anguilla', 'Antarctica', 'Antigua and Barbuda', 'Argentina', 'Armenia', 'Aruba', 'Asia & Pacific', 'Australia', 'Austria', 'Azerbaijan', 'Bahamas', 'Bahrain', 'Bangladesh', 'Barbados', 'Belarus', 'Belgium', 'Belize', 'Benin', 'Bermuda', 'Bhutan', 'Bolivia', 'Bosnia and Herzegovina', 'Botswana', 'Bouvet Island', 'Brazil', 'British Indian Ocean Territory', 'British Virgin Islands', 'Brunei', 'Bulgaria', 'Burkina Faso', 'Burundi', 'Cambodia', 'Cameroon', 'Canada', 'Cape Verde', 'Cayman Islands', 'Central African Republic', 'Chad', 'Chile', 'China', 'Christmas Island', 'Cocos Islands', 'Colombia', 'Comoros', 'Congo Democratic Republic', 'Congo Republic', 'Cook Islands', 'Costa Rica', 'Croatia', 'Cuba', 'Cyprus', 'Czech Republic', 'Denmark', 'Djibouti', 'Dominica', 'Dominican Republic', 'Ecuador', 'Egypt', 'El Salvador', 'Equatorial Guinea', 'Eritrea', 'Estonia', 'Ethiopia', 'European Union', 'Falkland Islands', 'Faroe Islands', 'Fiji', 'Finland', 'France', 'French Polynesia', 'French Southern Territories', 'Gabon', 'Gambia', 'Georgia', 'Germany', 'Ghana', 'Gibraltar', 'Greece', 'Greenland', 'Grenada', 'Guam', 'Guatemala', 'Guernsey', 'Guinea', 'Guinea-Bissau', 'Guyana', 'Haiti', 'Heard Island and McDonald Islands', 'Holy See', 'Honduras', 'Hong Kong', 'Hungary', 'Iceland', 'India', 'Indonesia', 'Iran', 'Iraq', 'Ireland', 'Isle of Man', 'Israel', 'Italy', 'Ivory Coast', 'Jamaica', 'Japan', 'Jersey', 'Jordan', 'Kazakhstan', 'Kenya', 'Kiribati', 'Korea North', 'Korea South', 'Kuwait', 'Kyrgyzstan', 'Laos', 'Latvia', 'Lebanon', 'Lesotho', 'Liberia', 'Libya', 'Liechtenstein', 'Lithuania', 'Luxembourg', 'Macao', 'Macedonia', 'Madagascar', 'Malawi', 'Malaysia', 'Maldives', 'Mali', 'Malta', 'Marshall Islands', 'Mauritania', 'Mauritius', 'Mayotte', 'Mexico', 'Micronesia', 'Moldova', 'Monaco', 'Mongolia', 'Montenegro', 'Montserrat', 'Morocco', 'Mozambique', 'Myanmar', 'Namibia', 'Nauru', 'Nepal', 'Netherlands', 'Netherlands Antilles', 'New Caledonia', 'New Zealand', 'Nicaragua', 'Niger', 'Nigeria', 'Niue', 'Norfolk Island', 'Northern Mariana Islands', 'Norway', 'Oman', 'Pakistan', 'Palau', 'Palestinian Territory', 'Panama', 'Papua New Guinea', 'Paraguay', 'Peru', 'Philippines', 'Pitcairn', 'Poland', 'Portugal', 'Puerto Rico', 'Qatar', 'Romania', 'Russia', 'Rwanda', 'Saint Barthelemy', 'Saint Helena Ascension and Tristan da Cunha', 'Saint Kitts and Nevis', 'Saint Lucia', 'Saint Martin', 'Saint Pierre and Miquelon', 'Saint Vincent and the Grenadines', 'Samoa', 'San Marino', 'Sao Tome and Principe', 'Saudi Arabia', 'Senegal', 'Serbia', 'Seychelles', 'Sierra Leone', 'Singapore', 'Slovakia', 'Slovenia', 'Solomon Islands', 'Somalia', 'South Africa', 'Spain', 'Sri Lanka', 'Sudan', 'Suriname', 'Svalbard', 'Swaziland', 'Sweden', 'Switzerland', 'Syria', 'Taiwan', 'Tajikistan', 'Tanzania', 'Thailand', 'Timor-Leste', 'Togo', 'Tokelau', 'Tonga', 'Trinidad and Tobago', 'Tunisia', 'Turkey', 'Turkmenistan', 'Turks and Caicos Islands', 'Tuvalu', 'Uganda', 'Ukraine', 'United Arab Emirates', 'United Kingdom', 'United States', 'Uruguay', 'Uzbekistan', 'Vanuatu', 'Venezuela', 'Vietnam', 'Virgin Islands', 'Wallis and Futuna', 'Western Sahara', 'Yemen', 'Zambia', 'Zimbabwe'];
+
+                        this.DataDoPedido = ko.observable(new Date().toISOString().substring(0, 10));
+                        this.Passageiro = ko.observable();
+                        this.Identificacao = ko.observable();
+
+                        this.OrigemPaisCode = ko.observable();
+                        this.OrigemPaisName = ko.observable();
+                        this.OrigemIntercontinental = ko.observable();
+                        //this.OrigemIntercontinental = ko.computed(function () {
+                        //    self.OrigemPaisCode(); // only to trigger the update of this field when OrigemPais is updated
+                        //    return $('#OrigemPaisDD :selected').parent().attr('label');
+                        //});
+
+                        this.OrigCidadeAutoC = new google.maps.places.Autocomplete(
+                            document.getElementById('OrigemCidade'),
+                            { types: ['(cities)'] }
+                        );
+                        this.OrigemPaisCode.subscribe(function (v) {
+                            self.OrigemCidade("");
+                            self.OrigemPaisName($('#OrigemPaisDD :selected').text());
+                            self.OrigemIntercontinental($('#OrigemPaisDD :selected').parent().attr('label'));
+
+                            if (v == "")
+                                self.OrigCidadeAutoC.setComponentRestrictions();
+                            else
+                                self.OrigCidadeAutoC.setComponentRestrictions({ country: v });
+                        });
+
+                        this.OrigemCidade = ko.observable();
+
+                        // só funciona se seleccionarmos a cidade com o teclado
+                        this.OrigemCidade.subscribe(function () {
+
+                            if (self.OrigemPaisCode() == "") {
+
+                                var country = self.OrigemCidade().split(',').pop().trim();
+                                
+                                self.OrigemPaisName(country);
+                                self.OrigemIntercontinental($('#OrigemPaisDD option').filter(function () { return $(this).html() == country; }).parent().attr('label'));
+                            } 
+                        });
+
+                        this.DestinoPais = ko.observable();
+                        this.DestinoIntercontinental = ko.observable($('#DestinoPais :selected').parent().attr('label'));
+                        this.DestinoCidade = ko.observable();
+                        this.Partida = ko.observable();
+                        this.Chegada = ko.observable();
+                        this.DiasDeAntecedencia = ko.computed(function () {
+                            return Math.floor(((new Date(self.Partida()) - new Date(self.DataDoPedido())) || 0) / 86400000);
+                        });
+                        this.BookingAdvanceMin = ko.computed(function () {
+                            return (self.OrigemIntercontinental() || self.DestinoIntercontinental()) ? 21 : 7;
+                        });
+                        this.BookingOverdue = ko.computed(function () {
+                            return self.DiasDeAntecedencia() < self.BookingAdvanceMin();
+                        });
+                        this.CustoAviao = ko.observable(0.00);
+                        this.CustoHotel = ko.observable(0.00);
+                        this.CustoCarro = ko.observable(0.00);
+                        this.CustoOutros = ko.observable(0.00);
+                        this.CustoTotal = ko.computed(function () {
+                            return +(((
+                                self.CustoAviao() * 1 +
+                                self.CustoHotel() * 1 +
+                                self.CustoCarro() * 1 +
+                                self.CustoOutros() * 1
+                            )).toFixed(2));
+                        });
+
+                        this.availableMotivos = ko.observableArray(@Html.Raw(Json.Encode(ViewBag.Motivos)));
+                        this.selectedMotivo = ko.observable();
+                        this.displayMotivo = function () {
+                            return displayNameInfoCode(this.selectedMotivo());
+                        };
+
+                        this.availableJust = ko.observableArray(@Html.Raw(Json.Encode(ViewBag.Justificacoes)));
+                        this.selectedJust = ko.observable();
+                        this.displayJust = function () {
+                            return displayNameInfoCode(this.selectedJust());
+                        };
+
+                        this.availableAloc = ko.observableArray(@Html.Raw(Json.Encode(ViewBag.Alocacoes)));
+                        this.selectedAloc = ko.observable();
+                        this.displayAloc = function () {
+                            return displayNameInfoCode(this.selectedAloc());
+                        };
+
+                        this.DataDoPedido.subscribe(function (d) {
+                            $('#Partida').attr('min', d);
+                        });
+
+                        this.Partida.subscribe(function (d) {
+                            if (new Date(self.Chegada() || null) < new Date(d)) {
+                                self.Chegada(d);
+                            }
+                            $('#Chegada').attr('min', d);
+                        });
+
+                        this.OrigemCidade.subscribe(function (c) {
+                            c.split(',').pop().trim()
+                        });
+                    }
+
+                    // Activates knockout.js
+                    var vm = new AppViewModel();
+                    ko.applyBindings(vm);
+
+
+
+                    $(document).ready(function () {
+                        var today = new Date().toISOString().substring(0, 10);
+                        $('#Partida').attr('min', today);
+                        $('#Chegada').attr('min', today);
+                    });
+
+                   
+                    var destCidade = new google.maps.places.Autocomplete(
+                        document.getElementById('DestinoCidade'),
+                        {
+                            //                        componentRestrictions: { country: $('#DestinoPais').val() },
+                            types: ['(cities)']
+                        }
+                    );
+
+                    $('#OrigemPais').change(function () {
+                        //vm.OrigemIntercontinental("Intercontinental" == $(':selected', this).parent().attr('label'));
+                        //$('#OrigemCidade').val('');
+                        //origCidade.setComponentRestrictions(
+                        //    { country: this.value }
+                        //);
+                    });
+
+                    $('#DestinoCidade').change(function (v) {
+                        xc = $(this);
+                    });
+                    var xc; 
+                    $('#DestinoPais').change(function () {
+                        vm.DestinoIntercontinental("Intercontinental" == $(':selected', this).parent().attr('label'));
+                        $('#DestinoCidade').val('');
+                        destCidade.setComponentRestrictions(
+                            { country: this.value }
+                        );
+                    });
+
+                    
+
+                    function readUrl(input) {
+
+                        if (input.files && input.files[0]) {
+                            let reader = new FileReader();
+                            reader.onload = (e) => {
+                                let imgData = e.target.result;
+                                let imgName = input.files[0].name;
+                                input.setAttribute("data-title", imgName);
+                                console.log(e.target.result);
+                            }
+                            reader.readAsDataURL(input.files[0]);
+                        }
+
+
+                       // $('#Avatar')[0].files[0].name = "123123123_" + $('#Avatar')[0].files[0].name
+
+                    }
+                </script>
+
+            }

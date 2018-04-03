@@ -1,0 +1,118 @@
+﻿@model TripRqst.Models.TripRequest
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @Html.EditorFor(model => model.DataDoPedido, new { htmlAttributes = new { @class = "form-control", @disabled } })
+
+    <p>
+        Motivo:
+        <select data-bind="options: availableMotivos,
+                       optionsText: 'Name',
+                       value: selectedMotivo,
+                       optionsCaption: 'Choose...'"></select>
+        <div data-bind="text: displayMotivo()"></div>.
+    </p>
+
+    <span data-bind="with: selectedMotivo">
+        <input type="hidden" name="MotivoCode" data-bind="value: Code" />
+        <input type="hidden" name="MotivoName" data-bind="value: Name" />
+    </span>
+
+
+    <p>
+        Justificação:
+        <select data-bind="options: availableJust,
+                       optionsText: 'Name',
+                       value: selectedJust,
+                       optionsCaption: 'Choose...'"></select>
+        <div data-bind="text: displayJust()"></div>.
+    </p>
+
+    <span data-bind="with: selectedJust">
+        <input type="hidden" name="JustificacaoCode" data-bind="value: Code" />
+        <input type="hidden" name="JustificacaoName" data-bind="value: Name" />
+    </span>
+
+
+    <p>
+        Alocação:
+        <select data-bind="options: availableAloc,
+                       optionsText: 'Name',
+                       value: selectedAloc,
+                       optionsCaption: 'Choose...'"></select>
+        <div data-bind="text: displayAloc()"></div>.
+    </p>
+
+    <span data-bind="with: selectedAloc">
+        <input type="hidden" name="AlocacaoCode" data-bind="value: Code" />
+        <input type="hidden" name="AlocacaoName" data-bind="value: Name" />
+    </span>
+
+
+
+
+
+    <input type="submit" />
+
+}
+
+
+
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+    
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+<script>
+
+    document.getElementById('dataDoPedido').value = new Date();
+
+    function displayNameInfoCode(obj) {
+        if (!obj)
+            return "";
+
+        var ret = (obj.Name || "") + " " + (obj.Info || "") + " " + (obj.Code || "");
+        return ret;
+    }
+
+    function AppViewModel() {
+
+        this.availableMotivos = ko.observableArray(@Html.Raw(Json.Encode(ViewBag.Motivos)));
+        this.selectedMotivo = ko.observable();
+        this.displayMotivo = function () {
+            return displayNameInfoCode(this.selectedMotivo());
+        };
+
+        this.availableJust = ko.observableArray(@Html.Raw(Json.Encode(ViewBag.Justificacoes)));
+        this.selectedJust = ko.observable();
+        this.displayJust = function () {
+            return displayNameInfoCode(this.selectedJust());
+        };
+
+        this.availableAloc = ko.observableArray(@Html.Raw(Json.Encode(ViewBag.Alocacoes)));
+        this.selectedAloc = ko.observable();
+        this.displayAloc = function () {
+            return displayNameInfoCode(this.selectedAloc());
+        };
+    }
+
+    // Activates knockout.js
+    var vm = new AppViewModel();
+    ko.applyBindings(vm);
+
+</script>
+
+}

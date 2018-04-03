@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using TripRqst.Models;
 
+
 namespace TripRqst.Controllers
 {
     public class TripRequestsController : Controller
@@ -37,18 +38,29 @@ namespace TripRqst.Controllers
         }
 
         // GET: TripRequests/Create
-        public ActionResult Create()
+        public ActionResult Create(string view = "Create")
         {
-            ViewBag.Motivos = db.TR_Motivos.Where(m => m.Active);
-            ViewBag.Justificacoes = db.TR_Justificacoes.Where(j => j.Active);
+            var m = new TripRequest();
             ViewBag.Alocacoes = db.TR_Alocacoes.Where(a => a.Active);
+            ViewBag.Justificacoes = db.TR_Justificacoes.Where(j => j.Active);
+            ViewBag.Motivos = db.TR_Motivos.Where(mm => mm.Active);
+            ViewBag.Username = User.Identity.Name;
 
-            var r = new TripRequest
-            {
-                DataDoPedido = DateTime.Now,
-                Passageiro = User.Identity.Name
-            };
-            return View(r);
+            /*
+            var groupDomestic = new SelectListGroup { Name = "Domestic" };
+            var groupIntercontinental = new SelectListGroup { Name = "Intercontinental" };
+            ViewBag.Countries = (IEnumerable<SelectListItem>) db.Countries
+                .Where(c=>c.Active)
+                .ToList()
+                .Select(c => new SelectListItem
+                {
+                    Value =c.Code,
+                    Text =c.Name,
+                    Selected = c.Name.Equals("Other"),
+                    Group = c.IsDomestic ? groupDomestic : groupIntercontinental
+                }).OrderBy(c=>c.Group.Name).ThenBy(c=>c.Text);
+                */
+            return View(view, m);
         }
 
         // POST: TripRequests/Create
@@ -56,16 +68,33 @@ namespace TripRqst.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,DataDoPedido,Passageiro,MotivoCode,MotivoName,Identificacao,Origem,Destino,Partida,Chegada,DiasDeAntecedencia,CustoAviao,CustoHotel,CustoCarro,CustoOutros,CustoTotal")] TripRequest tripRequest)
+        public async Task<ActionResult> Create(TripRequest model, HttpPostedFileBase justEmail)
         {
             if (ModelState.IsValid)
             {
-                db.TR_requests.Add(tripRequest);
+                db.TR_requests.Add(model);
                 await db.SaveChangesAsync();
+
+                if (justEmail != null && justEmail.ContentLength > 0)
+                {
+                    var fileName = System.IO.Path.GetFileName(justEmail.FileName);
+                    var path = Server.MapPath("~/App_Data/uploads/TripRequests/")+model.Id;
+                    System.IO.Directory.CreateDirectory(path);
+                    var filepath = System.IO.Path.Combine(path, fileName);
+                    justEmail.SaveAs(filepath);
+
+                    model.EmailAnexo = filepath;
+                    await db.SaveChangesAsync();
+                }
+
                 return RedirectToAction("Index");
             }
 
-            return View(tripRequest);
+            ViewBag.Alocacoes = db.TR_Alocacoes.Where(a => a.Active);
+            ViewBag.Justificacoes = db.TR_Justificacoes.Where(j => j.Active);
+            ViewBag.Motivos = db.TR_Motivos.Where(mm => mm.Active);
+
+            return View(model);
         }
 
         // GET: TripRequests/Edit/5
@@ -88,7 +117,7 @@ namespace TripRqst.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Id,DataDoPedido,Passageiro,MotivoCode,MotivoName,Identificacao,Origem,Destino,Partida,Chegada,DiasDeAntecedencia,CustoAviao,CustoHotel,CustoCarro,CustoOutros,CustoTotal")] TripRequest tripRequest)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,DataDoPedido,Passageiro,MotivoCode,MotivoName,Identificacao,Origem,Destino,Partida,Chegada,DiasDeAntecedencia,JustificacaoCode,JustificacaoName,EmailAnexo,CustoAviao,CustoHotel,CustoCarro,CustoOutros,CustoTotal,AlocacaoCode,AlocacaoName")] TripRequest tripRequest)
         {
             if (ModelState.IsValid)
             {

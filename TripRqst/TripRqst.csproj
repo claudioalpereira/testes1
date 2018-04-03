@@ -190,13 +190,32 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap4.min.css" />
+    <Content Include="Content\img\airport.jpg" />
+    <Content Include="Content\img\planeseat.jpg" />
+    <Content Include="Content\img\sie_ingenuity_logo.png" />
+    <Content Include="Content\Themes\clean-blog.css" />
+    <Content Include="Content\Themes\clean-blog.js" />
+    <Content Include="Content\Themes\clean-blog.min.css" />
+    <Content Include="Content\Themes\clean-blog.min.js" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\font-awesome\css\font-awesome.css" />
+    <Content Include="fonts\font-awesome\css\font-awesome.min.css" />
+    <Content Include="fonts\font-awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="fonts\font-awesome\css\font-awesome.css.map" />
+    <Content Include="fonts\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\font-awesome\fonts\FontAwesome.otf" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\bootstrap4.bundle.min.js" />
+    <Content Include="Scripts\bootstrap4.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -204,6 +223,8 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\knockout-3.4.2.debug.js" />
+    <Content Include="Scripts\knockout-3.4.2.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -244,7 +265,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\TripRequests\Create.cshtml" />
+    <Content Include="Views\TripRequests\Create1.cshtml" />
     <Content Include="Views\TripRequests\Delete.cshtml" />
     <Content Include="Views\TripRequests\Details.cshtml" />
     <Content Include="Views\TripRequests\Edit.cshtml" />
@@ -264,6 +285,12 @@
     <Content Include="Views\Justificacao_Tr\Details.cshtml" />
     <Content Include="Views\Justificacao_Tr\Edit.cshtml" />
     <Content Include="Views\Justificacao_Tr\Index.cshtml" />
+    <Content Include="Views\TripRequests\Create2.cshtml" />
+    <Content Include="Views\TripRequests\Create.cshtml" />
+    <Content Include="Views\TripRequests\Create3.cshtml" />
+    <Content Include="Views\Shared\_Layout2.cshtml" />
+    <Content Include="Views\Account\Login - Copy.cshtml" />
+    <Content Include="Views\Shared\_LayoutSplash.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

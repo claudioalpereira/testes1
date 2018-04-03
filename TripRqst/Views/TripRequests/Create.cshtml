@@ -1,151 +1,553 @@
 ﻿@model TripRqst.Models.TripRequest
 
 @{
+//    Layout = "~/Views/Shared/_Layout2.cshtml";
     ViewBag.Title = "Create";
+    var ccc = (IEnumerable<SelectListItem>)ViewBag.Countries;
+    //System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("pt-PT");
 }
 
-<h2>Create</h2>
+ 
 
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>TripRequest</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.DataDoPedido, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DisplayFor(m=>m.DataDoPedido)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Passageiro, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Passageiro, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Passageiro, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.MotivoCode, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.MotivoCode, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.MotivoCode, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.MotivoName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.MotivoName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.MotivoName, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Identificacao, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Identificacao, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Identificacao, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Origem, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Origem, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Origem, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Destino, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Destino, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Destino, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Partida, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Partida, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Partida, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Chegada, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Chegada, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Chegada, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.DiasDeAntecedencia, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DiasDeAntecedencia, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DiasDeAntecedencia, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CustoAviao, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CustoAviao, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CustoAviao, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CustoHotel, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CustoHotel, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CustoHotel, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CustoCarro, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CustoCarro, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CustoCarro, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CustoOutros, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CustoOutros, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CustoOutros, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CustoTotal, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CustoTotal, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CustoTotal, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+    <!-- Page Header -->
+<!--    <header class="masthead" style="background-image: url('img/planeseat.jpg')"> -->
+<header class="masthead" style="background-image: url('../../Content/img/airport.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="page-heading">
+                    <h1>Business Trip Request</h1>
+                    <span class="subheading">Plan your business trip in advance.</span>
+                </div>
             </div>
         </div>
     </div>
-}
+</header>
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <p>Fill out the form below to submit your next business trip for approval.</p>
+
+            @using (Html.BeginForm("Create", "TripRequests", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                @* Data do Pedido *@
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls floating-label-form-group-with-value">
+                        <label>Data do Pedido</label>
+                        <span class="" data-bind="text: DataDoPedido"></span>
+                        <input type="hidden" name="DataDoPedido" data-bind="value: DataDoPedido" />
+                    </div>
+                </div>
+
+                <div class="control-group row">
+
+                    @* Passageiro *@
+                    <div class="col-8 form-group floating-label-form-group controls floating-label-form-group-with-value">
+                        <label>Passageiro</label>
+                        @Html.EditorFor(model => model.Passageiro, new { htmlAttributes = new { @class = "form-control", @data_bind = "value: Passageiro", @placeholder = "Passageiro", required = "true" } })
+                        @Html.ValidationMessageFor(model => model.Passageiro, "", new { @class = "help-block text-danger" })
+                    </div>
+          
+                @* Identificação *@
+                    <div class="col-4 form-group floating-label-form-group controls">
+                        <label>Identificação</label>
+                        @Html.EditorFor(model => model.Identificacao, new { htmlAttributes = new { @class = "form-control", @data_bind = "value: Identificacao", @placeholder = "Identificação", required = "true" } })
+                        @Html.ValidationMessageFor(model => model.Identificacao, "", new { @class = "help-block text-danger" })
+                    </div>
+                </div>
+
+
+
+                @* Origem *@
+                <!--<input id="OrigemCidade" placeholder="Origem" type="text" class="form-control" data-bind="value: OrigemCidade" />-->
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls">
+                        <label>Origem</label>
+                        <input id="OrigemCidade"
+                               name="OrigemCidade"
+                               placeholder="Origem"
+                               type="text"
+                               class="form-control"
+                               data-bind="value: OrigemCidade"
+                               required
+                               data-validation-required-message="Please enter the origin city.">
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                <input type="hidden" name="OrigemPais" data-bind="value: OrigemPais" />
+
+                @* Destino *@
+                <!--<input id="DestinoCidade" placeholder="Destino" type="text" class="form-control" data-bind="value: DestinoCidade" />-->
+                <div class="control-group">
+                    <div class="form-group floating-label-form-group controls">
+                        <label>Destino</label>
+                        <input id="DestinoCidade"
+                               name="DestinoCidade"
+                               placeholder="Destino"
+                               type="text"
+                               class="form-control"
+                               data-bind="value: DestinoCidade"
+                               required
+                               data-validation-required-message="Please enter the destination city.">
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                <input type="hidden" name="DestinoPais" data-bind="value: DestinoPais" />
+
+                @* Partida / Chegada *@
+                <div class="row control-group">
+                    @* Partida *@
+                    <div class="form-group col-6 floating-label-form-group controls floating-label-form-group-with-value">
+                        <label>Partida</label>
+                        <input type="date"
+                               class="form-control"
+                               placeholder="Partida"
+                               id="Partida"
+                               name="Partida"
+                               data-bind="value: Partida"
+                               required
+                               data-validation-required-message="Please enter your phone number.">
+                        <p class="help-block text-danger"></p>
+                    </div>
+                    @* Partida *@
+                    <div class="form-group col-6 floating-label-form-group controls floating-label-form-group-with-value">
+                        <label>Chegada</label>
+                        <input type="date"
+                               class="form-control"
+                               placeholder="Chegada"
+                               id="Chegada"
+                               name="Chegada"
+                               data-bind="value: Chegada"
+                               required
+                               data-validation-required-message="Please enter your phone number.">
+                        <p class="help-block text-danger"></p>
+                    </div>
+                </div>
+                <input type="hidden" name="DiasDeAntecedencia" data-bind="value: DiasDeAntecedencia()" />
+
+                @* labels *@
+                <div class="row">
+                    <div class="col-4 ">
+                        <label style="font-size:70%; color:grey;" data-bind="text: BookingText()"></label>
+                        <label style="font-size:70%;" data-bind="html: BookingIcon()"></label>
+                    </div>
+                    <div class="col-8">
+                        @* Justificacao *@
+                        <div id="justificacao_div" class="control-group">
+                            <div class="form-group floating-label-form-group controls ">
+                                <div class="input-group">
+                                    <select id="JustificacaoSelect"
+                                            class="form-control"
+                                            data-val="true"
+                                            data-val-required="This field is required."
+                                            data-bind="options: availableJust,
+                                    optionsText: 'Name',
+                                    value: selectedJust,
+                                    optionsCaption: 'Justificação...'"></select>
+                                    <div id="mail_button" class="btn btn-primary input-group-addon" style="padding:6px">
+                                        <i id="mail_icon" class="fa fa-envelope-o" style="font-size:1.5em"></i>
+                                        <input id="mail_file" name="justEmail" type="file" class="custom-file-input" accept=".msg" onchange="(function () { $('#mail_icon').toggleClass('fa-envelope', 'fa-envelope-o');})()">
+
+                                    </div>
+                                </div>
+
+                                <div data-bind="with: selectedJust">
+                                    <input type="hidden" name="JustificacaoCode" data-bind="value: Code" />
+                                    <input type="hidden" name="JustificacaoName" data-bind="value: Name" />
+                                </div>
+                                <div class="field-validation-valid text-danger" data-valmsg-for="JustificacaoSelect" data-valmsg-replace="true"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-1">
+                        @*
+                        <label class="btn btn-default btn-file ">
+                            <i class="fa fa-envelope-o" style="font-size:1.5em"></i>
+                            <input hidden class="btn btn-default" type="file" id="justEmail" name="justEmail" accept=".msg" />
+                        </label>
+                        *@
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-4">
+                        @* Alocacao *@
+                        <div class="control-group">
+                            <div class="form-group floating-label-form-group controls">
+                                <label style="opacity:1; margin-bottom:3em;">Alocação</label>
+
+                                <select id="AlocacaoSelect"
+                                        class="form-control"
+                                        data-val="true"
+                                        data-val-required="This field is required."
+                                        data-bind="options: availableAloc,
+                                    optionsText: 'Name',
+                                    value: selectedAloc,
+                                    optionsCaption: 'Alocação...'"></select>
+
+                                <span data-bind="with: selectedAloc">
+                                    <input type="hidden" name="AlocacaoCode" data-bind="value: Code" />
+                                    <input type="hidden" name="AlocacaoName" data-bind="value: Name" />
+                                </span>
+
+                                <div style="font-size:70%" data-bind="text: displayAloc()"></div>
+                                <span class="field-validation-valid text-danger" data-valmsg-for="AlocacaoSelect" data-valmsg-replace="true"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-8">
+                        @* Motivo *@
+                        <div class="control-group">
+                            <div class="form-group floating-label-form-group controls">
+                                <label style="opacity:1; margin-bottom:3em;">Motivo</label>
+
+                                <select id="MotivoSelect"
+                                        class="form-control"
+                                        data-val="true"
+                                        data-val-required="This field is required."
+                                        data-bind="options: availableMotivos,
+                                    optionsText: 'Name',
+                                    value: selectedMotivo,
+                                    optionsCaption: 'Motivo...'"></select>
+
+                                <span data-bind="with: selectedMotivo">
+                                    <input type="hidden" name="MotivoCode" data-bind="value: Code" />
+                                    <input type="hidden" name="MotivoName" data-bind="value: Name" />
+                                </span>
+
+                                <div style="font-size:70%" data-bind="text: displayMotivo()"></div>
+                                <span class="field-validation-valid text-danger" data-valmsg-for="MotivoSelect" data-valmsg-replace="true"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                @* Custos *@
+                @* Aviao *@
+                <div class="row">
+                    <div class="form-group col-3 floating-label-form-group controls floating-label-form-group-with-value">
+                        <label>Avião</label>
+                        <div class="input-group">
+                            <span class="input-group-addon" style="font-size: 1.5em">€ </span>
+                            @Html.EditorFor(model => model.CustoAviao, new
+                       {
+                           htmlAttributes = new
+                           {
+                               @class = "form-control currency",
+                               @data_bind = "value: CustoAviao",
+                               @step = 0.01,
+                               @type = "number",
+                               @min = 0,
+                               @data_number_to_fixed = 2,
+                               @data_number_stepfactor = 100
+                           }
+                       })
+                            @Html.ValidationMessageFor(model => model.CustoAviao, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    @* Hotel *@
+                    <div class="form-group col-3 floating-label-form-group controls floating-label-form-group-with-value">
+                        <label>Hotel</label>
+                        <div class="input-group">
+                            <span class="input-group-addon" style="font-size: 1.5em">€ </span>
+                            @Html.EditorFor(model => model.CustoHotel, new
+                       {
+                           htmlAttributes = new
+                           {
+                               @class = "form-control currency",
+                               @data_bind = "value: CustoHotel",
+                               @step = "0.01",
+                               @type = "number",
+                               @min = 0,
+                               @data_number_to_fixed = "2",
+                               @data_number_stepfactor = "100"
+                           }
+                       })
+                            @Html.ValidationMessageFor(model => model.CustoHotel, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    @* Carro *@
+                    <div class="form-group col-3 floating-label-form-group controls floating-label-form-group-with-value">
+                        <label>Carro</label>
+                        <div class="input-group">
+                            <span class="input-group-addon" style="font-size: 1.5em">€ </span>
+                            @Html.EditorFor(model => model.CustoCarro, new
+                       {
+                           htmlAttributes = new
+                           {
+                               @class = "form-control currency",
+                               @data_bind = "value: CustoCarro",
+                               @step = "0.01",
+                               @type = "number",
+                               @min = 0,
+                               @data_number_to_fixed = "2",
+                               @data_number_stepfactor = "100"
+                           }
+                       })
+                            @Html.ValidationMessageFor(model => model.CustoCarro, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    @* Total *@
+                    <div class="form-group col-3 floating-label-form-group controls floating-label-form-group-with-value">
+                        <label>Total</label>
+                        <div class="input-group  alert-primary" style="font-size: 1.5em">
+                            <span class="input-group-addon">€ </span>
+                            <span class="" data-bind="text: CustoTotal()"></span>
+                        </div>
+                    </div>
+                    <input type="hidden" name="CustoTotal" data-bind="value: CustoTotal" />
+
+                    @* Outros
+                    <div class="form-group col-3 floating-label-form-group controls floating-label-form-group-with-value">
+                        <label>Outros</label>
+                        <div class="input-group">
+                            <span class="input-group-addon">€</span>
+                            @Html.EditorFor(model => model.CustoOutros, new
+                            {
+                                htmlAttributes = new
+                                {
+                                    @class = "form-control currency",
+                                    @data_bind = "value: CustoOutros",
+                                    @step = "0.01",
+                                    @type = "number",
+                                    @min = 0,
+                                    @data_number_to_fixed = "2",
+                                    @data_number_stepfactor = "100"
+                                }
+                            })
+                            @Html.ValidationMessageFor(model => model.CustoOutros, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    *@
+                </div>
+                @*
+                <div class="currency">
+                    @string.Format("{0:C}", Model.CustoTotal)
+                </div>
+                *@
+                <br>
+                <div id="success"></div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-block btn-primary" id="sendMessageButton">Submit</button>
+                </div>
+
+            }
+        </div>
+
+
+
+        </div>
+    </div>
+<hr>
+
+
 
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+
+    @* upload button *@
+    <style>
+        div#mail_button {
+            /* IMPORTANT STUFF */
+            overflow: hidden;
+            position: relative;
+        }
+
+        input#mail_file {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            font-size: 100px;
+            z-index: 2;
+            opacity: 0.0; /* Standard: FF gt 1.5, Opera, Safari */
+            filter: alpha(opacity=0); /* IE lt 8 */
+            -ms-filter: "alpha(opacity=0)"; /* IE 8 */
+            -khtml-opacity: 0.0; /* Safari 1.x */
+            -moz-opacity: 0.0; /* FF lt 1.5, Netscape */
+        }
+    </style>
+
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyBWB2K_gcueglv8tfndel_f8-thkCliwUo"></script>
+
+    @* Google Places *@
+    <script>
+        //http://country.io/continent.json
+        var country_continent = { "BD": "AS", "BE": "EU", "BF": "AF", "BG": "EU", "BA": "EU", "BB": "NA", "WF": "OC", "BL": "NA", "BM": "NA", "BN": "AS", "BO": "SA", "BH": "AS", "BI": "AF", "BJ": "AF", "BT": "AS", "JM": "NA", "BV": "AN", "BW": "AF", "WS": "OC", "BQ": "NA", "BR": "SA", "BS": "NA", "JE": "EU", "BY": "EU", "BZ": "NA", "RU": "EU", "RW": "AF", "RS": "EU", "TL": "OC", "RE": "AF", "TM": "AS", "TJ": "AS", "RO": "EU", "TK": "OC", "GW": "AF", "GU": "OC", "GT": "NA", "GS": "AN", "GR": "EU", "GQ": "AF", "GP": "NA", "JP": "AS", "GY": "SA", "GG": "EU", "GF": "SA", "GE": "AS", "GD": "NA", "GB": "EU", "GA": "AF", "SV": "NA", "GN": "AF", "GM": "AF", "GL": "NA", "GI": "EU", "GH": "AF", "OM": "AS", "TN": "AF", "JO": "AS", "HR": "EU", "HT": "NA", "HU": "EU", "HK": "AS", "HN": "NA", "HM": "AN", "VE": "SA", "PR": "NA", "PS": "AS", "PW": "OC", "PT": "EU", "SJ": "EU", "PY": "SA", "IQ": "AS", "PA": "NA", "PF": "OC", "PG": "OC", "PE": "SA", "PK": "AS", "PH": "AS", "PN": "OC", "PL": "EU", "PM": "NA", "ZM": "AF", "EH": "AF", "EE": "EU", "EG": "AF", "ZA": "AF", "EC": "SA", "IT": "EU", "VN": "AS", "SB": "OC", "ET": "AF", "SO": "AF", "ZW": "AF", "SA": "AS", "ES": "EU", "ER": "AF", "ME": "EU", "MD": "EU", "MG": "AF", "MF": "NA", "MA": "AF", "MC": "EU", "UZ": "AS", "MM": "AS", "ML": "AF", "MO": "AS", "MN": "AS", "MH": "OC", "MK": "EU", "MU": "AF", "MT": "EU", "MW": "AF", "MV": "AS", "MQ": "NA", "MP": "OC", "MS": "NA", "MR": "AF", "IM": "EU", "UG": "AF", "TZ": "AF", "MY": "AS", "MX": "NA", "IL": "AS", "FR": "EU", "IO": "AS", "SH": "AF", "FI": "EU", "FJ": "OC", "FK": "SA", "FM": "OC", "FO": "EU", "NI": "NA", "NL": "EU", "NO": "EU", "NA": "AF", "VU": "OC", "NC": "OC", "NE": "AF", "NF": "OC", "NG": "AF", "NZ": "OC", "NP": "AS", "NR": "OC", "NU": "OC", "CK": "OC", "XK": "EU", "CI": "AF", "CH": "EU", "CO": "SA", "CN": "AS", "CM": "AF", "CL": "SA", "CC": "AS", "CA": "NA", "CG": "AF", "CF": "AF", "CD": "AF", "CZ": "EU", "CY": "EU", "CX": "AS", "CR": "NA", "CW": "NA", "CV": "AF", "CU": "NA", "SZ": "AF", "SY": "AS", "SX": "NA", "KG": "AS", "KE": "AF", "SS": "AF", "SR": "SA", "KI": "OC", "KH": "AS", "KN": "NA", "KM": "AF", "ST": "AF", "SK": "EU", "KR": "AS", "SI": "EU", "KP": "AS", "KW": "AS", "SN": "AF", "SM": "EU", "SL": "AF", "SC": "AF", "KZ": "AS", "KY": "NA", "SG": "AS", "SE": "EU", "SD": "AF", "DO": "NA", "DM": "NA", "DJ": "AF", "DK": "EU", "VG": "NA", "DE": "EU", "YE": "AS", "DZ": "AF", "US": "NA", "UY": "SA", "YT": "AF", "UM": "OC", "LB": "AS", "LC": "NA", "LA": "AS", "TV": "OC", "TW": "AS", "TT": "NA", "TR": "AS", "LK": "AS", "LI": "EU", "LV": "EU", "TO": "OC", "LT": "EU", "LU": "EU", "LR": "AF", "LS": "AF", "TH": "AS", "TF": "AN", "TG": "AF", "TD": "AF", "TC": "NA", "LY": "AF", "VA": "EU", "VC": "NA", "AE": "AS", "AD": "EU", "AG": "NA", "AF": "AS", "AI": "NA", "VI": "NA", "IS": "EU", "IR": "AS", "AM": "AS", "AL": "EU", "AO": "AF", "AQ": "AN", "AS": "OC", "AR": "SA", "AU": "OC", "AT": "EU", "AW": "NA", "IN": "AS", "AX": "EU", "AZ": "AS", "IE": "EU", "ID": "AS", "UA": "EU", "QA": "AS", "MZ": "AF" }
+
+        origCidadeAutoC = new google.maps.places.Autocomplete(
+                           document.getElementById('OrigemCidade'),
+                           { types: ['(cities)'] }
+                       );
+        destCidadeAutoC = new google.maps.places.Autocomplete(
+                           document.getElementById('DestinoCidade'),
+                           { types: ['(cities)'] }
+                       );
+        $('#OrigemCidade').change(function (v) {
+            setTimeout(() =>vm.OrigemCidade(this.value), 250);
+            @*https://stackoverflow.com/a/33962053/9230822*@
+            setTimeout(() =>vm.OrigemPais(origCidadeAutoC.getPlace().address_components.find((c) =>c.types.find((t) =>t == "country")).short_name), 1000);
+        });
+        $('#DestinoCidade').change(function (v) {
+            setTimeout(() =>vm.DestinoCidade(this.value), 250);
+            @*https://stackoverflow.com/a/33962053/9230822*@
+            setTimeout(() =>vm.DestinoPais(destCidadeAutoC.getPlace().address_components.find((c) =>c.types.find((t) =>t == "country")).short_name), 1000);
+        });
+    </script>
+
+    @* Aux *@
+    <script>
+        function displayNameInfoCode(obj) {
+            if (!obj)
+                return "";
+
+            var ret = (obj.Name || "") + " " + (obj.Info || "") + " " + (obj.Code || "");
+            return ret;
+        }
+    </script>
+
+    @* Knockout *@
+    <script>
+
+        function AppViewModel() {
+            var self = this;
+
+            this.DataDoPedido = ko.observable(new Date().toISOString().substring(0, 10));
+            this.Passageiro = ko.observable('@ViewBag.Username');
+            this.Identificacao = ko.observable();
+
+            @* Origem *@
+            this.OrigemCidade = ko.observable();
+            this.OrigemPais = ko.observable();
+            this.OrigemContinente = ko.computed(function () {
+                return country_continent[self.OrigemPais()] || "XX";
+            });
+
+            @* Destino *@
+            this.DestinoCidade = ko.observable();
+            this.DestinoPais = ko.observable();
+            this.DestinoContinente = ko.computed(function () {
+                return country_continent[self.DestinoPais()] || "XX";
+            });
+
+            @* Partida / Chegada *@
+            this.Partida = ko.observable();
+            this.Chegada = ko.observable();
+            // limits Chegada minimum
+            this.Partida.subscribe(function (d) {
+                if (new Date(self.Chegada() || null) < new Date(d)) {
+                    self.Chegada(d);
+                }
+                $('#Chegada').attr('min', d);
+            });
+
+            @* Computed *@
+            this.DiasDeAntecedencia = ko.computed(function () {
+                return Math.floor(((new Date(self.Partida()) - new Date(self.DataDoPedido())) || 0) / 86400000);
+            });
+            this.BookingAdvanceMin = ko.computed(function () {
+
+                return (
+                        self.OrigemContinente() != "XX" &&
+                        self.DestinoContinente() != "XX" &&
+                        self.OrigemContinente() == self.DestinoContinente()
+                    ) ? 7 : 21;
+
+            });
+            this.BookingOverdue = ko.computed(function () {
+                return self.DiasDeAntecedencia() < self.BookingAdvanceMin();
+            });
+            this.BookingOverdue.subscribe(function (x) {
+                console.log(x);
+                if (x) {
+                    $('#justificacao_div').show();
+                } else {
+                    $('#justificacao_div').hide();
+                }
+            });
+
+
+            this.BookingText = ko.computed(function () {
+                return self.OrigemContinente() + "-" +
+                        self.DestinoContinente() + " (" +
+                        self.DiasDeAntecedencia() + "/" +
+                        self.BookingAdvanceMin() + " dias) " ;
+            });
+            this.BookingIcon = ko.computed(function () {
+                return  self.BookingOverdue() ?
+                        '<i class="fa fa-calendar-times-o" style="color:red"></i>' :
+                        '<i class="fa fa-calendar-check-o" style="color:green"></i>';
+            });
+
+            @* Custos *@
+            this.CustoAviao = ko.observable(0.00);
+            this.CustoHotel = ko.observable(0.00);
+            this.CustoCarro = ko.observable(0.00);
+            this.CustoOutros = ko.observable(0.00);
+            this.CustoTotal = ko.computed(function () {
+                return +(((
+                    self.CustoAviao() * 1 +
+                    self.CustoHotel() * 1 +
+                    self.CustoCarro() * 1 +
+                    self.CustoOutros() * 1
+                )).toFixed(2));
+            });
+
+            @* Motivo *@
+            this.availableMotivos = ko.observableArray(@Html.Raw(Json.Encode(ViewBag.Motivos)));
+            this.selectedMotivo = ko.observable();
+            this.displayMotivo = function () {
+                return displayNameInfoCode(this.selectedMotivo());
+            };
+
+            @* Justificacao *@
+            this.availableJust = ko.observableArray(@Html.Raw(Json.Encode(ViewBag.Justificacoes)));
+            this.selectedJust = ko.observable();
+            this.displayJust = function () {
+                return displayNameInfoCode(this.selectedJust());
+            };
+
+            @* Alocacao *@
+            this.availableAloc = ko.observableArray(@Html.Raw(Json.Encode(ViewBag.Alocacoes)));
+            this.selectedAloc = ko.observable();
+            this.displayAloc = function () {
+                return displayNameInfoCode(this.selectedAloc());
+            };
+
+
+            // debug
+            this.OrigemContinente.subscribe((x) =>console.log(x));
+            this.DestinoContinente.subscribe((x) =>console.log(x));
+        }
+
+        // Activates knockout.js
+        var vm = new AppViewModel();
+        ko.applyBindings(vm);
+
+        // init date min
+        $(document).ready(function () {
+            var today = new Date().toISOString().substring(0, 10);
+            $('#Partida').attr('min', today);
+            $('#Chegada').attr('min', today);
+        });
+
+
+    </script>
+
+
+   
+
 }
