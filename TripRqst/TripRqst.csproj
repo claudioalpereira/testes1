@@ -44,6 +44,22 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Aspose.Cells, Version=7.4.1.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>..\packages\Aspose.1.0.0\lib\Aspose.Cells.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Aspose.Pdf, Version=7.7.0.0, Culture=neutral, PublicKeyToken=47b2d0fcacdd3eb6, processorArchitecture=MSIL">
+      <HintPath>..\packages\Aspose.1.0.0\lib\Aspose.Pdf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Aspose.Slides, Version=7.2.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>..\packages\Aspose.1.0.0\lib\Aspose.Slides.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Aspose.Words, Version=14.7.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <HintPath>..\packages\Aspose.1.0.0\lib\Aspose.Words.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -186,6 +202,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Utils\MyEmailService.cs" />
+    <Compile Include="Utils\PdfResult.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -291,6 +308,7 @@
     <Content Include="Views\Shared\_Layout2.cshtml" />
     <Content Include="Views\Account\Login - Copy.cshtml" />
     <Content Include="Views\Shared\_LayoutSplash.cshtml" />
+    <Content Include="Views\TripRequests\PDFTest.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

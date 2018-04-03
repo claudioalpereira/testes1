@@ -8,7 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TripRqst.Models;
-
+using TripRqst.Utils;
 
 namespace TripRqst.Controllers
 {
@@ -97,6 +97,27 @@ namespace TripRqst.Controllers
             return View(model);
         }
 
+        protected ActionResult Pdf(string fileDownloadName, string viewName, object model)
+        {
+            // Based on View() code in Controller base class from MVC
+            if (model != null)
+            {
+                ViewData.Model = model;
+            }
+            PdfResult pdf = new PdfResult()
+            {
+                FileDownloadName = fileDownloadName,
+                ViewName = viewName,
+                ViewData = ViewData,
+                TempData = TempData,
+                ViewEngineCollection = ViewEngineCollection
+            };
+            return pdf;
+        }
+        public async Task<ActionResult> PDFTest()
+        {
+            return Pdf(null, null, new int[] { 1, 2, 3 });
+        }
         // GET: TripRequests/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {

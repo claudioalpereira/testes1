@@ -67,3 +67,7 @@ c:\users\z003m7uz\documents\visual studio 2015\Projects\TripRqst\TripRqst\bin\Mi
 c:\users\z003m7uz\documents\visual studio 2015\Projects\TripRqst\TripRqst\obj\Debug\TripRqst.dll
 c:\users\z003m7uz\documents\visual studio 2015\Projects\TripRqst\TripRqst\obj\Debug\TripRqst.pdb
 C:\Users\z003m7uz\documents\visual studio 2015\Projects\TripRqst\TripRqst\obj\Debug\TripRqst.csprojResolveAssemblyReference.cache
+C:\Users\z003m7uz\documents\visual studio 2015\Projects\TripRqst\TripRqst\bin\Aspose.Cells.dll
+C:\Users\z003m7uz\documents\visual studio 2015\Projects\TripRqst\TripRqst\bin\Aspose.Pdf.dll
+C:\Users\z003m7uz\documents\visual studio 2015\Projects\TripRqst\TripRqst\bin\Aspose.Slides.dll
+C:\Users\z003m7uz\documents\visual studio 2015\Projects\TripRqst\TripRqst\bin\Aspose.Words.dll
