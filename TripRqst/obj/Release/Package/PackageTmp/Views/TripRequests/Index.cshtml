@@ -1,0 +1,160 @@
+﻿@model IEnumerable<TripRqst.Models.TripRequest>
+
+@{
+    ViewBag.Title = "Index";
+    System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("pt-PT");
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "New")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DataDoPedido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Passageiro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MotivoCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MotivoName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Identificacao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrigemPais)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrigemCidade)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DestinoPais)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DestinoCidade)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Partida)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Chegada)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiasDeAntecedencia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JustificacaoCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JustificacaoName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmailAnexo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustoAviao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustoHotel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustoCarro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustoOutros)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustoTotal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AlocacaoCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AlocacaoName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataDoPedido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Passageiro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MotivoCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MotivoName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Identificacao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrigemPais)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrigemCidade)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DestinoPais)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DestinoCidade)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Partida)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Chegada)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DiasDeAntecedencia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JustificacaoCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JustificacaoName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmailAnexo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustoAviao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustoHotel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustoCarro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustoOutros)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustoTotal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AlocacaoCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AlocacaoName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -14,6 +14,13 @@ namespace TripRqst
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "TriprequestByID",
+                url: "TripRequests/{id}",
+                defaults: new { controller = "TripRequests", action = "Details" }, 
+                constraints: new { id = @"^[0-9]+$" }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

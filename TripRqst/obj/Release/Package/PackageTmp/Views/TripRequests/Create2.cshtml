@@ -1,0 +1,273 @@
+﻿@model TripRqst.Models.TripRequest
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+  <!--
+      <input
+           class="form-control text-box single-line" 
+           data-val="true"
+           data-val-date="The field Data do pedido must be a date." 
+           data-val-required="The Data do pedido field is required." 
+           id="dataDoPedido" 
+           name="DataDoPedido" 
+           type="date" 
+           value="01-01-0001">
+      -->
+
+    @* dataDoPedido *@
+    <input class="form-control text-box single-line"
+           type="date"
+           readonly
+           data-val="true"
+           data-val-date="The field Data do pedido must be a date."
+           data-val-required="The Data do pedido field is required."
+           id="dataDoPedido"
+           name="DataDoPedido"
+           data-bind="value: dataDoPedido">
+
+    @* passageiro *@
+    <input class="form-control" 
+           type="text" 
+           name="Passageiro" 
+           data-bind="value: passageiro"/>
+
+    @* identificacao *@
+    <input type="text" name="Identificacao" data-bind="value: identificacao" />
+
+    @* origem *@
+    <input type="text" name="Origem" data-bind="value: origem" />
+
+    @* destino *@
+    <input type="text" name="Destino" data-bind="value: destino" />
+
+    @* partida *@
+    <input class="form-control text-box single-line"
+           type="date"
+           data-val="true"
+           data-val-date="The field Data do pedido must be a date."
+           data-val-required="The Data do pedido field is required."
+           id="partida"
+           name="Partida"
+           data-bind="value: partida">
+
+    @* chegada *@
+    <input class="form-control text-box single-line"
+           type="date"
+           data-val="true"
+           data-val-date="The field Data do pedido must be a date."
+           data-val-required="The Data do pedido field is required."
+           id="chegada"
+           name="Chegada"
+           data-bind="value: chegada">
+
+    @* diasDeAntecedencia *@
+    <input type="text" disabled name="DiasDeAntecedencia" data-bind="text: diasDeAntecedencia" />
+
+    
+    @* custoAviao *@
+    <div class="input-group">
+        <span class="input-group-addon">€</span>
+        <input type="number"
+               value="0.00"
+               min="0"
+               step="1"
+               data-number-to-fixed="2"
+               data-number-stepfactor="100"
+               class="form-control currency"
+               name="CustoAviao"
+               data-bind="value: custoAviao" />
+    </div>
+
+    @* custoHotel *@
+    <div class="input-group">
+        <span class="input-group-addon">€</span>
+        <input type="number"
+               value="0.00"
+               min="0"
+               step="1"
+               data-number-to-fixed="2"
+               data-number-stepfactor="100"
+               class="form-control currency"
+               name="CustoHotel"
+               data-bind="value: custoHotel" />
+    </div>
+
+    @* custoTransporte *@
+    <div class="input-group">
+        <span class="input-group-addon">€</span>
+        <input type="number"
+               value="0.00"
+               min="0"
+               step="1"
+               data-number-to-fixed="2"
+               data-number-stepfactor="100"
+               class="form-control currency"
+               name="CustoTransporte"
+               data-bind="value: custoTransporte" />
+    </div>
+
+    @* custoOutros *@
+    <div class="input-group">
+        <span class="input-group-addon">€</span>
+        <input type="number"
+               value="0.00"
+               min="0"
+               step="1"
+               data-number-to-fixed="2"
+               data-number-stepfactor="100"
+               class="form-control currency"
+               name="CustoOutros"
+               data-bind="value: custoOutros" />
+    </div>
+
+    @* custoTotal *@
+    <div class="input-group">
+        <span class="input-group-addon">€</span>
+        <input type="number"
+               disabled
+               data-number-to-fixed="2"
+               data-number-stepfactor="100"
+               class="form-control currency"
+               name="CustoTotal"
+               data-bind="value: custoTotal" />
+    </div>
+
+    @* Motivo *@
+        <p>
+            Motivo:
+            <select data-bind="options: availableMotivos,
+                       optionsText: 'Name',
+                       value: selectedMotivo,
+                       optionsCaption: 'Choose...'"></select>
+            <div data-bind="text: displayMotivo()"></div>.
+        </p>
+
+        <span data-bind="with: selectedMotivo">
+            <input type="hidden" name="MotivoCode" data-bind="value: Code" />
+            <input type="hidden" name="MotivoName" data-bind="value: Name" />
+        </span>
+
+        @* Justificação *@
+        <p>
+            Justificação:
+            <select data-bind="options: availableJust,
+                       optionsText: 'Name',
+                       value: selectedJust,
+                       optionsCaption: 'Choose...'"></select>
+            <div data-bind="text: displayJust()"></div>.
+        </p>
+
+        <span data-bind="with: selectedJust">
+            <input type="hidden" name="JustificacaoCode" data-bind="value: Code" />
+            <input type="hidden" name="JustificacaoName" data-bind="value: Name" />
+        </span>
+
+
+        @* Alocação *@
+        <p>
+            Alocação:
+            <select data-bind="options: availableAloc,
+                       optionsText: 'Name',
+                       value: selectedAloc,
+                       optionsCaption: 'Choose...'"></select>
+            <div data-bind="text: displayAloc()"></div>.
+        </p>
+
+        <span data-bind="with: selectedAloc">
+            <input type="hidden" name="AlocacaoCode" data-bind="value: Code" />
+            <input type="hidden" name="AlocacaoName" data-bind="value: Name" />
+        </span>
+
+
+
+
+
+        <input type="submit" />
+
+        }
+
+
+
+
+
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+
+            <script>
+
+                //document.getElementById('DataDoPedido').value = new Date().toISOString().substring(0, 10);
+
+                function displayNameInfoCode(obj) {
+                    if (!obj)
+                        return "";
+
+                    var ret = (obj.Name || "") + " " + (obj.Info || "") + " " + (obj.Code || "");
+                    return ret;
+                }
+
+                // View Model
+                function AppViewModel() {
+
+                    this.dataDoPedido = ko.observable(new Date().toISOString().substring(0, 10));
+                    this.passageiro = ko.observable();
+                    this.identificacao = ko.observable();
+                    this.origem = ko.observable();
+                    this.destino = ko.observable();
+                    this.partida = ko.observable();
+                    this.chegada = ko.observable();
+                    this.diasDeAntecedencia = ko.computed(function () {
+                        return Math.floor((this.partida() - this.dataDoPedido()) / 86400000);
+                    }, this);
+                    this.custoAviao = ko.observable(0.00);
+                    this.custoHotel = ko.observable(0.00);
+                    this.custoTransporte = ko.observable(0.00);
+                    this.custoOutros = ko.observable(0.00);
+                    this.custoTotal = ko.computed(function () {
+                        return +(((
+                            this.custoAviao() * 1 +
+                            this.custoHotel() * 1 +
+                            this.custoTransporte() * 1 +
+                            this.custoOutros() * 1
+                        )).toFixed(2));
+                    }, this);
+
+
+                    this.availableMotivos = ko.observableArray(@Html.Raw(Json.Encode(ViewBag.Motivos)));
+                    this.selectedMotivo = ko.observable();
+                    this.displayMotivo = function () {
+                        return displayNameInfoCode(this.selectedMotivo());
+                    };
+
+                    this.availableJust = ko.observableArray(@Html.Raw(Json.Encode(ViewBag.Justificacoes)));
+                    this.selectedJust = ko.observable();
+                    this.displayJust = function () {
+                        return displayNameInfoCode(this.selectedJust());
+                    };
+
+                    this.availableAloc = ko.observableArray(@Html.Raw(Json.Encode(ViewBag.Alocacoes)));
+                    this.selectedAloc = ko.observable();
+                    this.displayAloc = function () {
+                        return displayNameInfoCode(this.selectedAloc());
+                    };
+                }
+
+                // Activates knockout.js
+                var vm = new AppViewModel();
+                ko.applyBindings(vm);
+
+            </script>
+
+        }

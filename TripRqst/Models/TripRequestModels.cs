@@ -74,6 +74,8 @@ namespace TripRqst.Models
         [Display(Name = "Dias de antecedência")]
         public int DiasDeAntecedencia { get; set; }
 
+        public int BookingAdvanceMin { get; set; }
+
         [Display(Name = "Justificação (code)")]
         public string JustificacaoCode { get; set; }
 
@@ -109,6 +111,18 @@ namespace TripRqst.Models
         [Required]
         [Display(Name = "Alocação (nome)")]
         public string AlocacaoName { get; set; }
+
+        public bool RequireSignature1 { get; set; }
+        public string Signature1User { get; set; }
+        public bool Signed1 { get; set; }
+
+        public bool RequireSignature2 { get; set; }
+        public string Signature2User { get; set; }
+        public bool Signed2 { get; set; }
+
+        public string Pdf { get; set; }
+
+        public bool Closed { get; set; }
     }
 
     public class Alocacao_Tr
@@ -141,15 +155,6 @@ namespace TripRqst.Models
         public string Info { get; set; }
         public bool RequiresEmail { get; set; }
         public bool RequiresEmailFromAuthorizedSender { get; set; }
-        public bool Active { get; set; }
-    }
-
-    public class Country_Tr
-    {
-        [Key]
-        public string Code { get; set; }
-        public string Name { get; set; }
-        public bool IsDomestic { get; set; }
         public bool Active { get; set; }
     }
 

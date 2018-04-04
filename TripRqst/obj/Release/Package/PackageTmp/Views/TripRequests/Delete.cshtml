@@ -1,0 +1,184 @@
+﻿@model TripRqst.Models.TripRequest
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>TripRequest</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DataDoPedido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataDoPedido)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Passageiro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Passageiro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MotivoCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MotivoCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MotivoName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MotivoName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Identificacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Identificacao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Origem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Origem)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Destino)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Destino)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Partida)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Partida)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Chegada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Chegada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiasDeAntecedencia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiasDeAntecedencia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.JustificacaoCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JustificacaoCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.JustificacaoName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JustificacaoName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailAnexo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmailAnexo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustoAviao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustoAviao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustoHotel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustoHotel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustoCarro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustoCarro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustoOutros)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustoOutros)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustoTotal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustoTotal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AlocacaoCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AlocacaoCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AlocacaoName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AlocacaoName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

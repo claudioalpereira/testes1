@@ -60,11 +60,23 @@
       <HintPath>..\packages\Aspose.1.0.0\lib\Aspose.Words.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13\lib\itextsharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="itextsharp.xmlworker, Version=5.5.13.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\itextsharp.xmlworker.5.5.13\lib\itextsharp.xmlworker.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MvcRazorToPdf, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvcRazorToPdf.1.0.2\lib\40\MvcRazorToPdf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -117,6 +129,14 @@
     <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="TuesPechkin, Version=2.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\TuesPechkin.2.1.1\lib\net20\TuesPechkin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TuesPechkin.Wkhtmltox.Win32, Version=0.12.2.1, Culture=neutral, processorArchitecture=x86">
+      <HintPath>..\packages\TuesPechkin.Wkhtmltox.Win32.0.12.2.1\lib\net20\TuesPechkin.Wkhtmltox.Win32.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
@@ -189,6 +209,7 @@
     <Compile Include="Controllers\Justificacao_TrController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\Motivo_TrController.cs" />
+    <Compile Include="Controllers\PdfController.cs" />
     <Compile Include="Controllers\TripRequestsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -198,6 +219,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MyModels.cs" />
+    <Compile Include="Models\PdfExample.cs" />
     <Compile Include="Models\TripRequestModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -230,6 +252,7 @@
     <Content Include="fonts\font-awesome\fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\font-awesome\fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\font-awesome\fonts\FontAwesome.otf" />
+    <None Include="Properties\PublishProfiles\profile1.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap4.bundle.min.js" />
     <Content Include="Scripts\bootstrap4.min.js" />
@@ -303,12 +326,15 @@
     <Content Include="Views\Justificacao_Tr\Edit.cshtml" />
     <Content Include="Views\Justificacao_Tr\Index.cshtml" />
     <Content Include="Views\TripRequests\Create2.cshtml" />
-    <Content Include="Views\TripRequests\Create.cshtml" />
+    <Content Include="Views\TripRequests\New.cshtml" />
     <Content Include="Views\TripRequests\Create3.cshtml" />
     <Content Include="Views\Shared\_Layout2.cshtml" />
     <Content Include="Views\Account\Login - Copy.cshtml" />
     <Content Include="Views\Shared\_LayoutSplash.cshtml" />
     <Content Include="Views\TripRequests\PDFTest.cshtml" />
+    <Content Include="Views\Shared\_PdfLayout.cshtml" />
+    <Content Include="Views\Pdf\Index.cshtml" />
+    <Content Include="Views\TripRequests\PrintView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

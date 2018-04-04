@@ -1,0 +1,126 @@
+﻿@model TripRqst.Models.TripRequest
+
+@{
+    //Layout = "~/Views/Shared/_LayoutSplash.cshtml";
+    Layout = null;
+    ViewBag.Title = "Details";
+}
+
+
+
+@*
+    <img src="~/Content/img/sie_ingenuity_logo.png" height="100"/>
+
+    <div>
+        <h4>TripRequest</h4>
+        <hr />
+        <div class="row">
+            <span class="col-3">@Html.DisplayNameFor(model => model.DataDoPedido)</span>
+            <span class="col-3">@Html.DisplayFor(model => model.DataDoPedido)</span>
+            <span class="col-3">@Html.DisplayNameFor(model => model.Passageiro)</span>
+            <span class="col-3">@Html.DisplayFor(model => model.Passageiro)</span>
+        </div>
+        <div class="row">
+            <span class="col-3">@Html.DisplayNameFor(model => model.MotivoCode)</span>
+            <span class="col-3">@Html.DisplayFor(model => model.MotivoCode)</span>
+            <span class="col-3">@Html.DisplayNameFor(model => model.MotivoName)</span>
+            <span class="col-3">@Html.DisplayFor(model => model.MotivoName)</span>
+        </div>
+        <div class="row">
+            <span class="col-3">@Html.DisplayNameFor(model => model.Identificacao)</span>
+            <span class="col-3">@Html.DisplayFor(model => model.Identificacao)</span>
+            <span class="col-3">@Html.DisplayNameFor(model => model.OrigemPais)</span>
+            <span class="col-3">@Html.DisplayFor(model => model.OrigemPais)</span>
+        </div>
+        <div class="row">
+            <span class="col-3">@Html.DisplayNameFor(model => model.OrigemCidade)</span>
+            <span class="col-3">@Html.DisplayFor(model => model.OrigemCidade)</span>
+            <span class="col-3">@Html.DisplayNameFor(model => model.DestinoPais)</span>
+            <span class="col-3">@Html.DisplayFor(model => model.DestinoPais)</span>
+        </div>
+        <div class="row">
+            <span class="col-3">@Html.DisplayNameFor(model => model.DestinoCidade)</span>
+            <span class="col-3">@Html.DisplayFor(model => model.DestinoCidade)</span>
+            <span class="col-3">@Html.DisplayNameFor(model => model.Partida)</span>
+            <span class="col-3">@Html.DisplayFor(model => model.Partida)</span>
+        </div>
+        <div class="row">
+            <span class="col-3">@Html.DisplayNameFor(model => model.Chegada)</span>
+            <span class="col-3">@Html.DisplayFor(model => model.Chegada)</span>
+            <span class="col-3">@Html.DisplayNameFor(model => model.DiasDeAntecedencia)</span>
+            <span class="col-3">@Html.DisplayFor(model => model.DiasDeAntecedencia)</span>
+        </div>
+        <div class="row">
+            <span class="col-3">@Html.DisplayNameFor(model => model.JustificacaoCode)</span>
+            <span class="col-3">@Html.DisplayFor(model => model.JustificacaoCode)</span>
+            <span class="col-3">@Html.DisplayNameFor(model => model.JustificacaoName)</span>
+            <span class="col-3">@Html.DisplayFor(model => model.JustificacaoName)</span>
+        </div>
+        <div class="row">
+            <span class="col-3">@Html.DisplayNameFor(model => model.EmailAnexo)</span>
+            <span class="col-3">@Html.DisplayFor(model => model.EmailAnexo)</span>
+            <span class="col-3">@Html.DisplayNameFor(model => model.CustoAviao)</span>
+            <span class="col-3">@Html.DisplayFor(model => model.CustoAviao)</span>
+        </div>
+
+        <div class="row">
+            <span class="col-3">@Html.DisplayNameFor(model => model.CustoHotel)</span>
+            <span class="col-3">@Html.DisplayFor(model => model.CustoHotel)</span>
+            <span class="col-3">@Html.DisplayNameFor(model => model.CustoCarro)</span>
+            <span class="col-3">@Html.DisplayFor(model => model.CustoCarro)</span>
+        </div>
+
+        <div class="row">
+            <span class="col-3">@Html.DisplayNameFor(model => model.CustoOutros)</span>
+            <span class="col-3">@Html.DisplayFor(model => model.CustoOutros)</span>
+            <span class="col-3">@Html.DisplayNameFor(model => model.CustoTotal)</span>
+            <span class="col-3">@Html.DisplayFor(model => model.CustoTotal)</span>
+        </div>
+
+        <div class="row">
+            <span class="col-3">@Html.DisplayNameFor(model => model.AlocacaoCode)</span>
+            <span class="col-3">@Html.DisplayFor(model => model.AlocacaoCode)</span>
+            <span class="col-3">@Html.DisplayNameFor(model => model.AlocacaoName)</span>
+            <span class="col-3">@Html.DisplayFor(model => model.AlocacaoName)</span>
+        </div>
+
+        <div class="row">
+            <span class="col-3"></span>
+            <span class="col-3"></span>
+            <span class="col-3"></span>
+            <span class="col-3"></span>
+        </div>
+    </div>
+
+
+
+
+
+    @model TripRqst.Models.PdfExample
+    @{
+        ViewBag.Title = "Index";
+        Layout = "~/Views/Shared/_PdfLayout.cshtml";
+        var imagePath = Server.MapPath("~/Content/Images");
+    }
+    <h1>@Model.Heading</h1>
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum a urna metus. In id magna eget sapien vehicula sollicitudin fermentum nec ante. Ut iaculis vehicula leo nec posuere. Duis ornare hendrerit sem, nec volutpat nisi placerat a. Nullam convallis vitae augue vitae fringilla. Nunc viverra commodo laoreet. Vivamus fermentum ligula eros, eget sagittis justo euismod eget. Donec dolor neque, scelerisque vel vulputate quis, tincidunt et odio. Duis eget est risus. Phasellus ut nulla accumsan, malesuada sapien non, ornare nibh.
+    </p>
+    <img src="@imagePath\avatar.jpg" alt="mug shot" /><br />
+    <a href="http://www.highviewsoftwaresolutions.co.uk">http://www.highviewsoftwaresolutions.co.uk</a>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Description</th>
+            <th>Price</th>
+        </tr>
+        @foreach (var item in Model.Items)
+        {
+            <tr>
+                <td>@item.Description</td>
+                <td>@item.Price.ToString("c")</td>
+            </tr>
+        }
+    </table>
+
+*@

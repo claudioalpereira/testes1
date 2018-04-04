@@ -327,8 +327,7 @@ header.masthead .post-heading .meta a {
 }
 
 .floating-label-form-group input,
-.floating-label-form-group textarea,
-.btn {
+.floating-label-form-group textarea{
   font-size: 1.5em;
   position: relative;
   z-index: 1;

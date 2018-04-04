@@ -1,194 +1,228 @@
 ﻿@model TripRqst.Models.TripRequest
 
 @{
+    //    Layout = "~/Views/Shared/_Layout2.cshtml";
     ViewBag.Title = "Details";
+    //var ccc = (IEnumerable<SelectListItem>)ViewBag.Countries;
+    System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("pt-PT");
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>TripRequest</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.DataDoPedido)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.DataDoPedido)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Passageiro)
-        </dt>
+<!-- Page Header -->
+<!--    <header class="masthead" style="background-image: url('img/planeseat.jpg')"> -->
+<header class="masthead" style="background-image: url('../../Content/img/planeseat.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="page-heading">
+                    <h1>Business Trip Request</h1>
+                    <span class="subheading">Plan your business trip in advance.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
 
-        <dd>
-            @Html.DisplayFor(model => model.Passageiro)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.MotivoCode)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.MotivoCode)
-        </dd>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <p></p>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.MotivoName)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.MotivoName)
-        </dd>
+            @* Data do Pedido *@
+            <div class="control-group">
+                <div class="form-group floating-label-form-group controls floating-label-form-group-with-value">
+                    <label>Data do Pedido</label>
+                    <span>@Model.DataDoPedido.ToShortDateString()</span>
+                </div>
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Identificacao)
-        </dt>
+            <div class="control-group row">
 
-        <dd>
-            @Html.DisplayFor(model => model.Identificacao)
-        </dd>
+                @* Passageiro *@
+                <div class="col-8 form-group floating-label-form-group controls floating-label-form-group-with-value">
+                    <label>Passageiro</label>
+                    @Html.DisplayFor(model => model.Passageiro)
+                </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.OrigemPais)
-        </dt>
+                @* Identificação *@
+                <div class="col-4 form-group floating-label-form-group controls floating-label-form-group-with-value">
+                    <label>Identificação</label>
+                    @Html.DisplayFor(model => model.Identificacao)
+                </div>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.OrigemPais)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.OrigemCidade)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.OrigemCidade)
-        </dd>
+            @* Origem *@
+            <!--<input id="OrigemCidade" placeholder="Origem" type="text" class="form-control" data-bind="value: OrigemCidade" />-->
+            <div class="control-group">
+                <div class="form-group floating-label-form-group controls floating-label-form-group-with-value">
+                    <label>Origem</label>
+                    <span>@Model.OrigemCidade</span>
+                </div>
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DestinoPais)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.DestinoPais)
-        </dd>
+            @* Destino *@
+            <!--<input id="DestinoCidade" placeholder="Destino" type="text" class="form-control" data-bind="value: DestinoCidade" />-->
+            <div class="control-group">
+                <div class="form-group floating-label-form-group controls floating-label-form-group-with-value">
+                    <label>Destino</label>
+                    <span>@Model.DestinoCidade</span>
+                </div>
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DestinoCidade)
-        </dt>
+            @* Partida / Chegada *@
+            <div class="row control-group">
+                @* Partida *@
+                <div class="form-group col-6 floating-label-form-group controls floating-label-form-group-with-value">
+                    <label>Partida</label>
+                    <span>@Model.Partida.ToShortDateString()</span>
+                </div>
+                @* Partida *@
+                <div class="form-group col-6 floating-label-form-group controls floating-label-form-group-with-value">
+                    <label>Chegada</label>
+                    <span>@Model.Chegada.ToShortDateString()</span>
+                </div>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.DestinoCidade)
-        </dd>
+            @* labels *@
+            <div class="row">
+                <div class="col-4 ">
+                    <label style="font-size:70%; color:grey;">@string.Format("{0}-{1} ({2}/{3} dias)", Model.OrigemPais, Model.DestinoPais, Model.DiasDeAntecedencia, Model.BookingAdvanceMin)</label>
+                    <label style="font-size:70%;">
+                        @if (Model.DiasDeAntecedencia < Model.BookingAdvanceMin)
+                        {
+                            <i class="fa fa-calendar-times-o" style="color:red"></i>
+                        }
+                        else
+                        {
+                            <i class="fa fa-calendar-check-o" style="color:green"></i>
+                        }
+                    </label>
+                </div>
+                <div class="col-8">
+                    @* Justificacao *@
+                    <div class="control-group">
+                        <div class="form-group floating-label-form-group controls floating-label-form-group-with-value">
+                            <label>Justificação</label>
+                            <span>
+                                @if (Model.EmailAnexo != null)
+                                {
+                                    <a href="file?filepath=@Model.EmailAnexo" class="text-right" data-toggle="tooltip" title="download @Path.GetFileName(Model.EmailAnexo)"><i id="mail_icon" class="fa fa-paperclip" style="opacity:1"></i></a>
+                                }
+                                @Model.JustificacaoName
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Partida)
-        </dt>
+            <div class="row">
+                <div class="col-4">
+                    @* Alocacao *@
+                    <div class="control-group">
+                        <div class="form-group floating-label-form-group controls floating-label-form-group-with-value">
+                            <label>Alocação</label>
+                            <span>@Model.AlocacaoName</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-8">
+                    @* Motivo *@
+                    <div class="control-group">
+                        <div class="form-group floating-label-form-group controls floating-label-form-group-with-value">
+                            <label>Motivo</label>
+                            <span>@Model.MotivoName</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Partida)
-        </dd>
+            @* Custos *@
+            <div class="row">
+                @* Aviao *@
+                <div class="form-group col-3 floating-label-form-group controls floating-label-form-group-with-value">
+                    <label>Avião</label>
+                    <div class="input-group" style="font-size: 1.5em">
+                        <span class="input-group-addon">€ </span>
+                        <span>@Model.CustoAviao</span>
+                    </div>
+                </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Chegada)
-        </dt>
+                @* Hotel *@
+                <div class="form-group col-3 floating-label-form-group controls floating-label-form-group-with-value">
+                    <label>Hotel</label>
+                    <div class="input-group" style="font-size: 1.5em">
+                        <span class="input-group-addon">€ </span>
+                        <span>@Model.CustoHotel</span>
+                    </div>
+                </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Chegada)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DiasDeAntecedencia)
-        </dt>
+                @* Carro *@
+                <div class="form-group col-3 floating-label-form-group controls floating-label-form-group-with-value">
+                    <label>Carro</label>
+                    <div class="input-group" style="font-size: 1.5em">
+                        <span class="input-group-addon">€ </span>
+                        <span>@Model.CustoCarro</span>
+                    </div>
+                </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.DiasDeAntecedencia)
-        </dd>
+                @* Total *@
+                <div class="form-group col-3 floating-label-form-group controls floating-label-form-group-with-value">
+                    <label>Total</label>
+                    <div class="input-group  alert-primary" style="font-size: 1.5em">
+                        <span class="input-group-addon">€ </span>
+                        <span>@Model.CustoTotal</span>
+                    </div>
+                </div>
+            </div>
+            <br>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.JustificacaoCode)
-        </dt>
+            <div class="row">
+                @if(Model.RequireSignature1)
+                {
+                    <div class="form-group col-6 floating-label-form-group controls floating-label-form-group-with-value">
+                        <label>Assinatura</label>
+                        @if(Model.Signed1)
+                        {
+                        <span>@Model.Signature1User</span>
+                        }
+                        else
+                        {
+                        <span class="btn btn-danger btn-block"> <a href="file?filepath=@Model.Pdf" class="fa fa-pencil"></a> Assinar</span>
+                        }
+                    </div>
+                }
+                @if(Model.RequireSignature2)
+                {
+                    <div class="form-group col-6 floating-label-form-group controls floating-label-form-group-with-value">
+                        <label>Assinatura</label>
+                        @if (!Model.Signed2 && Model.Signed1)
+                        {
+                            <span class="btn btn-danger btn-block"> <a class="fa fa-pencil"></a> Assinar</span>
+                        }
+                        else
+                        {
+                            <span>@Model.Signature2User</span>
+                        }
+                    </div>
+                }
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.JustificacaoCode)
-        </dd>
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.JustificacaoName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.JustificacaoName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.EmailAnexo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.EmailAnexo)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CustoAviao)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CustoAviao)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CustoHotel)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CustoHotel)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CustoCarro)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CustoCarro)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CustoOutros)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CustoOutros)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CustoTotal)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CustoTotal)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AlocacaoCode)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AlocacaoCode)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AlocacaoName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AlocacaoName)
-        </dd>
-
-    </dl>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<hr>
+
+@section Scripts {
+
+}
